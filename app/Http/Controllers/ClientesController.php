@@ -65,14 +65,20 @@ class ClientesController extends Controller
         $contraseñaCorrecta = Cliente::select('password')
                                 ->where('user', '=', $usuario)
                                 ->first();
-        $apellido = Cliente::select('apellido')
+        $usuarioLogeado = Cliente::select('*')
                                 ->where('user', '=', $usuario)
                                 ->first();
+        $parametros =[
+            'nombre' => $usuarioLogeado->nombre,
+            'apellido' => $usuarioLogeado->apellido,
+            'user' => $usuarioLogeado->user,
+
+        ];
         if ($contraseñaCorrecta == '') {
             return 'El usuario es incorrecto';
         }
         if ($contraseñaIngresada == $contraseñaCorrecta->password) {
-            return $apellido->apellido;
+            return view('clientes.user', $parametros);
         }
 
         return 'La contraseña es incorrecta';
