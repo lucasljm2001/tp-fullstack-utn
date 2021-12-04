@@ -19,9 +19,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        foreach (Cliente::all() as $cliente) {
-            echo $cliente->nombre;
-        }
+        return view('clientes.login');
     }
 
     /**
@@ -60,9 +58,25 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $usuario = $request->post('usuario');
+        $contraseñaIngresada = $request->post('contraseña');
+        $contraseñaCorrecta = Cliente::select('password')
+                                ->where('user', '=', $usuario)
+                                ->first();
+        $apellido = Cliente::select('apellido')
+                                ->where('user', '=', $usuario)
+                                ->first();
+        if ($contraseñaCorrecta == '') {
+            return 'El usuario es incorrecto';
+        }
+        if ($contraseñaIngresada == $contraseñaCorrecta->password) {
+            return $apellido->apellido;
+        }
+
+        return 'La contraseña es incorrecta';
+        
     }
 
     /**
