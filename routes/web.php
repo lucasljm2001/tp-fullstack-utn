@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use \App\Http\Controllers\ClientesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('clientes', \App\Http\Controllers\ClientesController::class);
-Route::get('/hola', function () {
-    return 'hola';
-});
+
+Route::post('/clientes', [\App\Http\Controllers\ClientesController::class, 'inicio'])->name('clientes.inicio');
