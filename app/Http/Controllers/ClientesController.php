@@ -48,7 +48,6 @@ class ClientesController extends Controller
         DB::insert('insert into cliente (nombre, apellido, user, password) VALUES (?, ?, ?, ?)', [$nombre, 
         $apellido, $usuario, $contraseña]);
 
-        //return redirect()->back();
         return 'registro exitoso';
     }
 
@@ -68,20 +67,28 @@ class ClientesController extends Controller
         $usuarioLogeado = Cliente::select('*')
                                 ->where('user', '=', $usuario)
                                 ->first();
-        $parametros =[
-            'nombre' => $usuarioLogeado->nombre,
-            'apellido' => $usuarioLogeado->apellido,
-            'user' => $usuarioLogeado->user,
-
-        ];
+        
+        $dias = Cliente::select('dias')
+                        ->join('subscripcion', 'cliente.id', '=', 'subscripcion.id')
+                        ->first();
+        
+        if ($usuarioLogeado != '') {
+            $parametros =[
+                'nombre' => $usuarioLogeado->nombre,
+                'apellido' => $usuarioLogeado->apellido,
+                'user' => $usuarioLogeado->user,
+                'dias' => $dias->dias,
+    
+            ];
+        }
         if ($contraseñaCorrecta == '') {
-            return 'El usuario es incorrecto';
+            return 'El usuario y/o la contraseña son incorrectos';
         }
         if ($contraseñaIngresada == $contraseñaCorrecta->password) {
             return view('clientes.user', $parametros);
         }
 
-        return 'La contraseña es incorrecta';
+        return 'El usuario y/o la contraseña son incorrectos';
         
     }
 
