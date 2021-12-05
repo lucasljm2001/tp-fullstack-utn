@@ -21,7 +21,7 @@
         <input type="text" id="contraseña" name="contraseña"><br>
         <input type="submit">
     </form>
-<button><a href="{{ route('clientes.create') }}">Olvide mi contraseña</a></button> 
+<button><a href="{{ route('clientes.create') }}">Quiero registrarme</a></button> 
 </body>
 </html>
 

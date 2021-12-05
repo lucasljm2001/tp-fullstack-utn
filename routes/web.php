@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::resource('clientes', \App\Http\Controllers\ClientesController::class);
 
 Route::post('/clientes', [\App\Http\Controllers\ClientesController::class, 'inicio'])->name('clientes.inicio');
+
+Route::post('/clientes/nuevo', [\App\Http\Controllers\ClientesController::class, 'store'])->name('clientes.store');
