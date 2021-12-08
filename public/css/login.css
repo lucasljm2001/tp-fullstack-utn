@@ -1,0 +1,52 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #d5e1a3;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #bdc4a7, #d5e1a3);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background-image: radial-gradient(
+        circle,
+        #b75f37,
+        #c57347,
+        #d28659,
+        #e09a6c,
+        #edae7f,
+        #f0b987,
+        #f3c48f,
+        #f6cf99,
+        #efd499,
+        #e7d89b,
+        #dedd9e,
+        #d5e1a3
+    );
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+.h-custom {
+    height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+.sign-in-logo {
+    font-size: 60px;
+    color: #c57347;
+}
