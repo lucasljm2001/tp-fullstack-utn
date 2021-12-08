@@ -1,0 +1,64 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+body {
+  background-image: url("http://localhost/tp-fullstack-utn/public/images/2.jpg");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.table {
+  background-position: center;
+  width: 300px;
+  height: 400px;
+  background-color: #3b4652;
+  opacity: 0.85;
+  padding: 0 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #848484;
+}
+/* .container-page {
+  height: 50vh;
+  width: 20vw;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  transition: all 0.8s;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+  backdrop-filter: blur(10px);
+}
+.login-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+} */
+
+.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+.form {
+  width: 400px;
+  margin-top: 0%;
+  background: rgba(10, 62, 206, 0.4);
+}
