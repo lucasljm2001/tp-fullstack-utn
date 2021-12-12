@@ -19,9 +19,14 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('clientes.login');
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        return view('auth.login');
     }
 
     /**
@@ -68,7 +73,7 @@ class ClientesController extends Controller
         $usuarioLogeado = Cliente::select('*')
                                 ->where('email', '=', $usuario)
                                 ->first();
-        
+
         $credentials = [
                             'email' => $usuario,
                             'password' => $contraseñaIngresada,
@@ -78,23 +83,24 @@ class ClientesController extends Controller
                         ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
                         ->first();
         
-        
+        if ($usuarioLogeado == null) {
+            return 'Debe ingresar un usuario';
+        }
         $parametros =[
                 'nombre' => $usuarioLogeado->name,
                 'apellido' => $usuarioLogeado->apellido,
                 'user' => $usuarioLogeado->user,
                 'dias' => $dias->dias,
                 'tipo' => $usuarioLogeado->tipo,
-        ];
+            ];
         
         if (Auth::attempt($credentials)) {
             return view('clientes.user', $parametros);
         }
 
         return 'El usuario y/o la contraseña son incorrectos';
-        //return $usuarioLogeado;
-        
     }
+        
 
     /**
      * Show the form for editing the specified resource.
