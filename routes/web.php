@@ -2,13 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-<<<<<<< Updated upstream
-=======
-use \App\Http\Controllers\ClientesController;
-
 use Illuminate\Support\Facades\Auth;
 
->>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('user.login');
-};
-<<<<<<< Updated upstream
-=======
+});
 Route::resource('clientes', \App\Http\Controllers\ClientesController::class);
 
 Route::post('/clientes', [\App\Http\Controllers\ClientesController::class, 'inicio'])->name('clientes.inicio');
@@ -34,4 +27,3 @@ Route::post('/clientes/nuevo', [\App\Http\Controllers\ClientesController::class,
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
->>>>>>> Stashed changes
