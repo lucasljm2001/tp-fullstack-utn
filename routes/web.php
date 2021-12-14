@@ -20,6 +20,13 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::get('/', function () {
     return view('user.login');
 });
+
+Route::get('/clientes/turnos', [\App\Http\Controllers\TurnosController::class, 'mostrar'])
+->name('turnos.mostrar');
+
+Route::post('/clientes/turnos', [\App\Http\Controllers\TurnosController::class, 'misTurnos'])
+->name('turnos.misTurnos');
+
 Route::resource('clientes', \App\Http\Controllers\ClientesController::class);
 
 Route::post('/clientes', [\App\Http\Controllers\ClientesController::class, 'inicio'])->name('clientes.inicio');
@@ -39,3 +46,4 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
     return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
