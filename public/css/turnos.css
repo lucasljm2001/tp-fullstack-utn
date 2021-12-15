@@ -8,4 +8,7 @@
 .row{
   margin: 1%;
 }
-
+.flex-grow{
+  display: flex;
+  flex-direction: row;
+}

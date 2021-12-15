@@ -21,10 +21,10 @@ Route::get('/', function () {
     return view('user.login');
 });
 
-Route::get('/clientes/turnos', [\App\Http\Controllers\TurnosController::class, 'mostrar'])
+Route::get('/clientes/turnos/:id', [\App\Http\Controllers\TurnosController::class, 'mostrar'])
 ->name('turnos.mostrar');
 
-Route::post('/clientes/turnos', [\App\Http\Controllers\TurnosController::class, 'misTurnos'])
+Route::get('/clientes/turnosprueba', [\App\Http\Controllers\TurnosController::class, 'misTurnos'])
 ->name('turnos.misTurnos');
 
 Route::resource('clientes', \App\Http\Controllers\ClientesController::class);

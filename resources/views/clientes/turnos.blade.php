@@ -7,9 +7,21 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/turnos.css')}}">
     <script src="{{asset('js/turnos.js')}}"></script>
+    <script src="https://kit.fontawesome.com/839e8b1ba6.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Chakra Petch" rel="stylesheet" />
     <title>Turnos</title>
   </head>
   <body>
+    <div class="container">
+      <button class="btn btn-primary flecha" id="izq"><i class="fas fa-arrow-left"></i></button>
+      
+      <span>semana:</span>
+      <span id="dia1">27/12/2021</span>
+      <span>al</span>
+      <span id="dia2">2/1/2022</span>
+      <button class="btn btn-primary flecha" id="der"><i class="fas fa-arrow-right"></i></button>
+    </div>
     <div class="row">
           <div class="col-md-3 lista">
                             <div class="row">
@@ -19,7 +31,7 @@
                               elija su turno
                             </div>
                             <div class="row">
-                            <button class="btn btn-primary">lunes</button>
+                            <button class="btn btn-primary" id="lunes">lunes</button>
                             </div>
                             <div class="row">
                               martes
@@ -40,36 +52,45 @@
                               domingo
                             </div>
           </div>
-          <div class="col-md-9 lista">
-          <div class="row">
+          <div class="col-md-9 lista flex-grow" id="modificar">
+                            <div class="es">
                               Horarios disponibles
                             </div>
-                            <div class="row">
+                            <div class="es">
                               Elija su horario
                             </div>
-                            <div class="row justify-content-start but">
-                              <div class="col">
+                              <div class="col es">
                                 <button class="btn btn-primary">9:00</button>
                               </div>
-                              
+                            <div class="es">
+                            <div class="col">
+                                <button class="btn btn-primary">10:00</button>
+                              </div>
                             </div>
-                            <div class="row">
-                              9:00
+                            <div class="es">
+                            <div class="col">
+                                <button class="btn btn-primary">11:00</button>
+                              </div>
                             </div>
-                            <div class="row">
-                              9:00
+                            <div class="es">
+                            <div class="col">
+                                <button class="btn btn-primary">15:00</button>
+                              </div>
                             </div>
-                            <div class="row">
-                              9:00
+                            <div class="es">
+                            <div class="col">
+                                <button class="btn btn-primary">16:00</button>
+                              </div>
                             </div>
-                            <div class="row">
-                              9:00
+                            <div class="es">
+                            <div class="col">
+                                <button class="btn btn-primary">17:00</button>
+                              </div>
                             </div>
-                            <div class="row">
-                              9:00
-                            </div>
-                            <div class="row">
-                              9:00
+                            <div class="es">
+                            <div class="col">
+                                <button class="btn btn-primary">18:00</button>
+                              </div>
                             </div>
           </div>
 

@@ -88,6 +88,7 @@ class ClientesController extends Controller
         }
         $parametros =[
                 'nombre' => $usuarioLogeado->name,
+                'id' => $usuarioLogeado->id,
                 'apellido' => $usuarioLogeado->apellido,
                 'user' => $usuarioLogeado->user,
                 'dias' => $dias->dias,

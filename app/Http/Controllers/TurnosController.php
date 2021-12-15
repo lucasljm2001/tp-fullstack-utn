@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Turno;
+
+use \Illuminate\Support\Facades\DB;
+
 class TurnosController extends Controller
 {
     public function mostrar(Request $request){
@@ -11,10 +15,16 @@ class TurnosController extends Controller
     }
 
     public function misTurnos(Request $request){
-        $user = $request->post('user');
+        $id = $request->get('id');
+        $turnos = Turno::select('*')
+                        ->where('id_cliente', '=', $id)
+                        ->get();
+        $cturnos= $turnos->count();
+
         $resp =[
-            'user' => $user,
+            'turnos' => $turnos
         ];
+        
         return response()->json($resp);
     }
 }
