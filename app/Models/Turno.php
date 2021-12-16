@@ -14,4 +14,5 @@ class Turno extends Model
      * @var string
      */
     protected $table = 'turnos';
+    protected $fillable = ['id_cliente', 'horario', 'dia'];
 }

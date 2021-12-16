@@ -5,4 +5,7 @@
     <h2>Tiene {{$dias}} dias de suscripcion y es {{$tipo}}</h2>
 </div>
 <a href="{{ route('turnos.mostrar', ['id'=>$id]) }}">Mis turnos</a>
-<button><a href="{{ route('clientes.index') }}">Cerrar sesion</a></button> 
+<button><a href="{{ route('clientes.index') }}">Cerrar sesion</a></button>
+@if ($tipo=='admin')
+<a href="{{ route('clientes.administrar') }}">Modificar clientes</a>
+@endif

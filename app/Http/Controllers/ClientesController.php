@@ -29,6 +29,21 @@ class ClientesController extends Controller
         return view('auth.login');
     }
 
+    public function administrar(Request $request)
+    {
+        /*$sus = Cliente::select('*')
+                        ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+                        ->first();*/
+        $sus = DB::table('users')
+                    ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+                    ->select('name', 'dias', 'apellido', 'users.id')
+                    ->get();        
+        $params = [
+            'sus'=> $sus
+        ];
+        return view('clientes.admin', $params);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

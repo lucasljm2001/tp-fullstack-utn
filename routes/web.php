@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +26,23 @@ Route::get('/', function () {
 Route::get('/clientes/turnos/:id', [\App\Http\Controllers\TurnosController::class, 'mostrar'])
 ->name('turnos.mostrar');
 
+Route::get('/clientes/turnosdia', [\App\Http\Controllers\TurnosController::class, 'turnosDia'])
+->name('turnosDia.misTurnos');
+
 Route::get('/clientes/turnosprueba', [\App\Http\Controllers\TurnosController::class, 'misTurnos'])
 ->name('turnos.misTurnos');
+
+Route::get('/clientes/sus/{id}', [\App\Http\Controllers\SuscripcionController::class, 'mostrarSuscripcion'])
+->name('suscripcion.mostrarSuscripcion');
+
+Route::post('/clientes/susc', [\App\Http\Controllers\SuscripcionController::class, 'modificarSuscripcion'])
+->name('suscripcion.modificarSuscripcion');
+
+Route::post('/clientes/turnosprueba', [\App\Http\Controllers\TurnosController::class, 'agregarTurno'])
+->name('turnos.agregarTurno');
+
+Route::get('/clientes/admin', [\App\Http\Controllers\ClientesController::class, 'administrar'])
+->name('clientes.administrar');
 
 Route::resource('clientes', \App\Http\Controllers\ClientesController::class);
 

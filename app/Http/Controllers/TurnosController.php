@@ -27,4 +27,55 @@ class TurnosController extends Controller
         
         return response()->json($resp);
     }
+
+    public function turnosDia(Request $request){
+        $fecha = $request->get('fecha');
+        $hora = $request->get('hora');
+        $turnos = Turno::select('*')
+                        ->where('dia', '=', $fecha)
+                        ->where('horario', $hora)
+                        ->get();
+        $cturnos= $turnos->count();
+
+        $resp =[
+            'fecha' => $fecha,
+            'turnos' => $cturnos
+        ];
+        
+        return response()->json($resp);
+    }
+
+    public function agregarTurno(Request $request){
+        $fecha = $request->post('fecha');
+        $hora = $request->post('hora');
+        $id = $request->post('id');
+
+        /*$turno = new Turno;
+
+        $turno->id_cliente = $id;
+        $turno->horario = $hora;
+        $turno->dia = $fecha;
+
+        $turno->save();*/
+
+        /*$turno = Turno::create([
+            'id_cliente' => $id,
+            'horario' => $hora,
+            'dia' => $fecha,
+        ]);
+        $turno->fill(['id_cliente' => $id, 'horario' => $hora, 'dia' => $fecha]);*/
+
+        DB::table('turnos')->upsert([
+            ['id_cliente' => $id, 'horario' => $hora, 'dia' => $fecha]
+        ], ['id_cliente', 'horario'], ['dia']);
+
+        $resp =[
+            'fecha' => $fecha,
+            'hora' => $hora,
+            'id' => $id
+        ];
+        
+        return response()->json($resp);
+    }
 }
+
