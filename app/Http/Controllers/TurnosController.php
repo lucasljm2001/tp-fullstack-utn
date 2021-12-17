@@ -50,20 +50,6 @@ class TurnosController extends Controller
         $hora = $request->post('hora');
         $id = $request->post('id');
 
-        /*$turno = new Turno;
-
-        $turno->id_cliente = $id;
-        $turno->horario = $hora;
-        $turno->dia = $fecha;
-
-        $turno->save();*/
-
-        /*$turno = Turno::create([
-            'id_cliente' => $id,
-            'horario' => $hora,
-            'dia' => $fecha,
-        ]);
-        $turno->fill(['id_cliente' => $id, 'horario' => $hora, 'dia' => $fecha]);*/
 
         DB::table('turnos')->upsert([
             ['id_cliente' => $id, 'horario' => $hora, 'dia' => $fecha]

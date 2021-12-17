@@ -97,7 +97,25 @@ class ClientesController extends Controller
         $dias = Cliente::select('dias')
                         ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
                         ->first();
-        
+
+        $marcas = Cliente::select('desafio', 'marca')
+                            ->join('marcas', 'users.id', '=', 'marcas.idcliente')
+                            ->where('users.email', $usuario)
+                            ->distinct()
+                            ->get();;
+                
+        $rutinas = Cliente::select('nombre_rutina', 'nombre_ejercicio', 'turnos.dsem')
+                            ->join('rutinas_clientes', 'users.id', '=', 'rutinas_clientes.id_cliente')
+                            ->join('rutinas', 'rutinas_clientes.id_rutina', '=', 'rutinas.id')
+                            ->join('turnos', 'rutinas.dia', '=', 'turnos.dsem')
+                            ->join('ejercicios', 'rutinas.id', '=', 'ejercicios.id_rutina')
+                            ->where('users.email', $usuario)
+                            ->distinct()
+                            ->get();
+        $rutinasNombres = [];
+        for ($i=0; $i <count($rutinas) ; $i++) { 
+            array_push($rutinasNombres, $rutinas[$i]->nombre_rutina);
+        }
         if ($usuarioLogeado == null) {
             return 'Debe ingresar un usuario';
         }
@@ -108,6 +126,9 @@ class ClientesController extends Controller
                 'user' => $usuarioLogeado->user,
                 'dias' => $dias->dias,
                 'tipo' => $usuarioLogeado->tipo,
+                'rutinas' => array_unique($rutinasNombres),
+                'ejercicios' => $rutinas,
+                'marcas' => $marcas,
             ];
         
         if (Auth::attempt($credentials)) {

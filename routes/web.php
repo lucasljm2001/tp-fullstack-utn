@@ -35,6 +35,24 @@ Route::get('/clientes/turnosprueba', [\App\Http\Controllers\TurnosController::cl
 Route::get('/clientes/sus/{id}', [\App\Http\Controllers\SuscripcionController::class, 'mostrarSuscripcion'])
 ->name('suscripcion.mostrarSuscripcion');
 
+Route::post('/clientes/ed', [\App\Http\Controllers\SuscripcionController::class, 'agregarSuscripcion'])
+->name('suscripcion.agregarSuscripcion');
+
+Route::get('/clientes/ed', [\App\Http\Controllers\SuscripcionController::class, 'editarSuscripcion'])
+->name('suscripcion.editarSuscripcion');
+
+Route::get('/clientes/rutinas', [\App\Http\Controllers\RutinasController::class, 'mostrar'])
+->name('rutinas.mostrar');
+
+Route::post('/clientes/rutinas', [\App\Http\Controllers\RutinasController::class, 'insertar'])
+->name('rutinas.insertar');
+
+Route::delete('/clientes/rutinas', [\App\Http\Controllers\RutinasController::class, 'borrar'])
+->name('rutinas.borrar');
+
+Route::get('/clientes/marcas', [\App\Http\Controllers\RutinasController::class, 'marcas'])
+->name('rutinas.marcas');
+
 Route::post('/clientes/susc', [\App\Http\Controllers\SuscripcionController::class, 'modificarSuscripcion'])
 ->name('suscripcion.modificarSuscripcion');
 

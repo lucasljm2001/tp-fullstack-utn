@@ -51,4 +51,40 @@ class SuscripcionController extends Controller
         ];
         return response()->json($resp);
     }
+
+    public function editarSuscripcion()
+    {
+        $clientesSus = Cliente::select('users.id')
+                        ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+                        ->get();
+        
+        $clientes = Cliente::select('*')
+                        ->whereNotIn('id', $clientesSus)
+                        ->get();
+
+        $params = [
+                   'clientes' => $clientes,
+                ];
+            return view('clientes.agregar', $params);
+    }
+
+    public function agregarSuscripcion(Request $request)
+    {
+        $id = $request->post('id');
+        $dias = $request->post('dias');
+        DB::table('subscripcion')->upsert([
+        ['id' => $id, 'id_subscripcion' => $id, 'dias' => $dias],
+        ], ['id', 'id_subscripcion'], ['dias']);
+
+        $cliente = Cliente::select('name')
+                    ->where('id',$id)
+                    ->first();
+
+        $resp =[
+            'cliente' => $cliente->name,
+            'dias' => $dias,
+        ];
+
+            return response()->json($resp);
+    }
 }
