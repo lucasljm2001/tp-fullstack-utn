@@ -29,6 +29,21 @@ class ClientesController extends Controller
         return view('auth.login');
     }
 
+    public function administrar(Request $request)
+    {
+        /*$sus = Cliente::select('*')
+                        ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+                        ->first();*/
+        $sus = DB::table('users')
+                    ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+                    ->select('name', 'dias', 'apellido', 'users.id')
+                    ->get();        
+        $params = [
+            'sus'=> $sus
+        ];
+        return view('clientes.admin', $params);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -82,16 +97,37 @@ class ClientesController extends Controller
         $dias = Cliente::select('dias')
                         ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
                         ->first();
-        
+
+        $marcas = Cliente::select('desafio', 'marca')
+                            ->join('marcas', 'users.id', '=', 'marcas.idcliente')
+                            ->where('users.email', $usuario)
+                            ->distinct()
+                            ->get();;
+                
+        $rutinas = Cliente::select('nombre_rutina', 'nombre_ejercicio', 'turnos.dsem')
+                            ->join('turnos', 'users.id', '=', 'turnos.id_cliente')
+                            ->join('rutinas', 'turnos.dsem', '=', 'rutinas.dia')
+                            ->join('ejercicios', 'rutinas.id', '=', 'ejercicios.id_rutina')
+                            ->where('users.email', $usuario)
+                            ->distinct()
+                            ->get();
+        $rutinasNombres = [];
+        for ($i=0; $i <count($rutinas) ; $i++) { 
+            array_push($rutinasNombres, $rutinas[$i]->nombre_rutina);
+        }
         if ($usuarioLogeado == null) {
             return 'Debe ingresar un usuario';
         }
         $parametros =[
                 'nombre' => $usuarioLogeado->name,
+                'id' => $usuarioLogeado->id,
                 'apellido' => $usuarioLogeado->apellido,
                 'user' => $usuarioLogeado->user,
                 'dias' => $dias->dias,
                 'tipo' => $usuarioLogeado->tipo,
+                'rutinas' => array_unique($rutinasNombres),
+                'ejercicios' => $rutinas,
+                'marcas' => $marcas,
             ];
         
         if (Auth::attempt($credentials)) {
