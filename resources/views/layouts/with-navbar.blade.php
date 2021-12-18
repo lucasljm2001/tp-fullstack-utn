@@ -34,15 +34,15 @@
 
         <!-- Right elements -->
         <div class="d-flex align-items-center">
-            <!-- Icon -->
+            <!-- Icon
             <a class="text-reset me-3" href="#">
                 <i class="fas fa-shopping-cart"></i>
-            </a>
+            </a> -->
 
             <!-- Notifications -->
             <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-bell"></i>
-                <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                <i class="fas fa-calendar-week fs-lg"></i>
+                <span class="badge rounded-pill badge-notification bg-danger">{{$dias}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
@@ -68,7 +68,7 @@
                     <a class="dropdown-item" href="#">Settings</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="{{ route('clientes.index') }}">Cerrar sesion</a>
                 </li>
             </ul>
         </div>
