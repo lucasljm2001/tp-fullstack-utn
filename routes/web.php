@@ -44,14 +44,21 @@ Route::get('/clientes/ed', [\App\Http\Controllers\SuscripcionController::class, 
 Route::get('/clientes/rutinas', [\App\Http\Controllers\RutinasController::class, 'mostrar'])
 ->name('rutinas.mostrar');
 
+
 Route::post('/clientes/rutinas', [\App\Http\Controllers\RutinasController::class, 'insertar'])
 ->name('rutinas.insertar');
+
+Route::put('/clientes/rutinas/mod', [\App\Http\Controllers\RutinasController::class, 'modificar'])
+->name('rutinas.modificar');
 
 Route::delete('/clientes/rutinas', [\App\Http\Controllers\RutinasController::class, 'borrar'])
 ->name('rutinas.borrar');
 
 Route::get('/clientes/marcas', [\App\Http\Controllers\RutinasController::class, 'marcas'])
 ->name('rutinas.marcas');
+
+Route::post('/clientes/marcas', [\App\Http\Controllers\RutinasController::class, 'insertarMarca'])
+->name('rutinas.insertarMarca');
 
 Route::post('/clientes/susc', [\App\Http\Controllers\SuscripcionController::class, 'modificarSuscripcion'])
 ->name('suscripcion.modificarSuscripcion');

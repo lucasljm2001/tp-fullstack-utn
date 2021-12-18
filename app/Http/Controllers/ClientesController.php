@@ -105,9 +105,8 @@ class ClientesController extends Controller
                             ->get();;
                 
         $rutinas = Cliente::select('nombre_rutina', 'nombre_ejercicio', 'turnos.dsem')
-                            ->join('rutinas_clientes', 'users.id', '=', 'rutinas_clientes.id_cliente')
-                            ->join('rutinas', 'rutinas_clientes.id_rutina', '=', 'rutinas.id')
-                            ->join('turnos', 'rutinas.dia', '=', 'turnos.dsem')
+                            ->join('turnos', 'users.id', '=', 'turnos.id_cliente')
+                            ->join('rutinas', 'turnos.dsem', '=', 'rutinas.dia')
                             ->join('ejercicios', 'rutinas.id', '=', 'ejercicios.id_rutina')
                             ->where('users.email', $usuario)
                             ->distinct()

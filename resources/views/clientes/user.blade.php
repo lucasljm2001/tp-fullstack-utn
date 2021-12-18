@@ -28,7 +28,7 @@
                 @foreach ($rutinas as $rutina)
                     <tr>
                         <td>{{$rutina}}
-                            @foreach ($ejercicios as $ejercicio)
+                        @foreach ($ejercicios as $ejercicio)
                                 @if($rutina == $ejercicio->nombre_rutina)
                                     {{$ejercicio->nombre_ejercicio}}/{{$ejercicio->dsem}}
                                 @endif

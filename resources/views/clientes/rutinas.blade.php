@@ -25,11 +25,16 @@
                         <td>{{$rutina}}
                             @foreach ($ejercicios as $ejercicio)
                                 @if($rutina == $ejercicio->nombre_rutina)
-                                    {{$ejercicio->nombre_ejercicio}}/{{$ejercicio->dia}}
+                                    <span class="{{$rutina}}">{{$ejercicio->nombre_ejercicio}}</span>/
+                                @endif
+                            @endforeach
+                            @foreach ($ejercicios as $ejercicio)
+                                @if($rutina == $ejercicio->nombre_rutina)
+                                    <span class="{{$rutina}}">{{$ejercicio->dia}}</span>
                                 @endif
                             @endforeach
                             <button class="eliminar" id="{{$rutina}}">Eliminar rutina</button>
-                            <button>Editar rutina</button>
+                            <button class="editar" id="{{$rutina}}">Editar rutina</button>
                         </td>
                     </tr>
                 @endforeach
@@ -43,5 +48,6 @@
         </div>
         
         <button class="agregar">Agregar rutina</button>
+        <button class="modificar">Modificar rutina</button>
 </body>
 </html>

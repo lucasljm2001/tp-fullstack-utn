@@ -31,7 +31,7 @@ class RutinasController extends Controller
     {
         $marcas = DB::table('marcas')
                         ->join('users', 'marcas.idcliente', '=', 'users.id')
-                        ->select('idcliente', 'desafio', 'marca')
+                        ->select('name', 'apellido', 'idcliente', 'desafio', 'marca')
                         ->get();
         
         $params = [
@@ -50,6 +50,54 @@ class RutinasController extends Controller
                 ->delete();
         $res =[
             'ok'=>'ok'
+        ];
+
+        return response()->json($res);
+    }
+
+    public function modificar(Request $request)
+    {
+        $data = $request->post('datos');
+        $nombre = $request->post('nombre');
+
+        $rutinas = DB::table('rutinas')
+                            ->select('nombre_rutina', 'dia', 'id')
+                            ->where('nombre_rutina', $nombre)
+                            ->distinct()
+                            ->get();
+        if (count($rutinas)==0) {
+            $res =[
+                'error' => 'error'
+            ];
+            return response()->json($res);
+        }
+
+        DB::table('rutinas')
+            ->updateOrInsert(
+                ['nombre_rutina' => $nombre],
+                ['dia' => $data[2]]
+            );
+
+        DB::table('ejercicios')
+            ->where('id_rutina', $rutinas[0]->id)
+            ->delete();
+
+        DB::table('ejercicios')
+            ->insert([
+                'nombre_ejercicio' => $data[0],
+                'id_rutina' => $rutinas[0]->id
+            ]);
+            DB::table('ejercicios')
+            ->insert([
+                'nombre_ejercicio' => $data[1],
+                'id_rutina' => $rutinas[0]->id
+            ]);
+            
+        $res =[
+            'dia' =>$rutinas[0]->dia,
+            //'ejercicios' => $ejercicios,
+            'rutina' =>$rutinas[0]->id,
+            'data' => $data
         ];
 
         return response()->json($res);
@@ -80,6 +128,49 @@ class RutinasController extends Controller
             'ej1' => $ej1,
             'ej2' => $ej2,
             'dia' => $dia
+        ];
+
+        return response()->json($res);
+    }
+    public function insertarMarca(Request $request)
+    {
+        $nombre = $request->post('nombre');
+        $apellido = $request->post('apellido');
+        $desafio = $request->post('desafio');
+        $marca = $request->post('marca');
+
+
+        $users =DB::table('users')
+                ->select('id')
+                ->where('name', $nombre)
+                ->where('apellido', $apellido)
+                ->get();
+
+        if (count($users) == 0) {
+            $res =[
+                'error'=>'error'
+            ];
+            return response()->json($res);
+        }
+
+        /*DB::table('marcas')->insert([
+            'idcliente' => $users[0]->id,
+            'desafio' => $desafio,
+            'marca' => $marca,
+        ]);*/
+
+        DB::table('marcas')->updateOrInsert([
+            'idcliente' => $users[0]->id,
+            'desafio' => $desafio,
+        ], [
+            'marca' => $marca,
+        ]);
+
+        $res =[
+            'nombre'=>$nombre,
+            'idcliente' => $users[0]->id,
+            'desafio' => $desafio,
+            'marca' => $marca,
         ];
 
         return response()->json($res);

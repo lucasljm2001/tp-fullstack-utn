@@ -30,16 +30,32 @@ class TurnosController extends Controller
 
     public function turnosDia(Request $request){
         $fecha = $request->get('fecha');
-        $hora = $request->get('hora');
+        $hora = $request->get('horarios');
         $turnos = Turno::select('*')
                         ->where('dia', '=', $fecha)
-                        ->where('horario', $hora)
+                        ->whereIn('horario', $hora)
                         ->get();
-        $cturnos= $turnos->count();
+
+        $horarios = [
+            '09:00:00'=> 0,
+            '10:00:00'=> 0,
+            '11:00:00'=> 0,
+            '12:00:00'=> 0,
+            '13:00:00'=> 0,
+            '14:00:00'=> 0,
+            '15:00:00'=> 0,
+            '16:00:00'=> 0,
+            '17:00:00'=> 0,
+            '18:00:00'=> 0,
+        ];
+
+        for ($i=0; $i <count($turnos) ; $i++) { 
+            $horarios[$turnos[$i]->horario] = $horarios[$turnos[$i]->horario] + 1;
+        }
 
         $resp =[
             'fecha' => $fecha,
-            'turnos' => $cturnos
+            'turnos' => $horarios
         ];
         
         return response()->json($resp);
@@ -49,11 +65,12 @@ class TurnosController extends Controller
         $fecha = $request->post('fecha');
         $hora = $request->post('hora');
         $id = $request->post('id');
+        $dsem = $request->post('dsem');
 
 
-        DB::table('turnos')->upsert([
-            ['id_cliente' => $id, 'horario' => $hora, 'dia' => $fecha]
-        ], ['id_cliente', 'horario'], ['dia']);
+        DB::table('turnos')->insert([
+            ['id_cliente' => $id, 'horario' => $hora, 'dia' => $fecha, 'dsem' => $dsem]
+        ]);
 
         $resp =[
             'fecha' => $fecha,
