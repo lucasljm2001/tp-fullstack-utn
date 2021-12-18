@@ -16,7 +16,7 @@ $(document).ready(function(){
             data: {
                 id: arrayrut[7],
                 dias: num,
-                accion: ac            
+                accion: ac
             },
             success: function (response) {
                 $('#numer').html(response.ndias);

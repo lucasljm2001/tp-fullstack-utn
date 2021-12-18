@@ -44,7 +44,6 @@ Route::get('/clientes/ed', [\App\Http\Controllers\SuscripcionController::class, 
 Route::get('/clientes/rutinas', [\App\Http\Controllers\RutinasController::class, 'mostrar'])
     ->name('rutinas.mostrar');
 
-
 Route::post('/clientes/rutinas', [\App\Http\Controllers\RutinasController::class, 'insertar'])
     ->name('rutinas.insertar');
 
@@ -69,6 +68,9 @@ Route::post('/clientes/turnosprueba', [\App\Http\Controllers\TurnosController::c
 Route::get('/clientes/admin', [\App\Http\Controllers\ClientesController::class, 'administrar'])
     ->name('clientes.administrar');
 
+Route::get('/clientes/desafios', [\App\Http\Controllers\RutinasController::class, 'desafios'])
+    ->name('rutinas.desafios');
+
 Route::resource('clientes', \App\Http\Controllers\ClientesController::class);
 
 Route::post('/clientes', [\App\Http\Controllers\ClientesController::class, 'inicio'])->name('clientes.inicio');
@@ -88,3 +90,4 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
     return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+

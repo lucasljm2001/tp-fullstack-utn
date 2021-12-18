@@ -31,6 +31,7 @@ class RutinasController extends Controller
     {
         $marcas = DB::table('marcas')
                         ->join('users', 'marcas.idcliente', '=', 'users.id')
+                        ->join('desafios', 'marcas.desafio', '=', 'desafios.id')
                         ->select('name', 'apellido', 'idcliente', 'desafio', 'marca')
                         ->get();
         
@@ -153,12 +154,6 @@ class RutinasController extends Controller
             return response()->json($res);
         }
 
-        /*DB::table('marcas')->insert([
-            'idcliente' => $users[0]->id,
-            'desafio' => $desafio,
-            'marca' => $marca,
-        ]);*/
-
         DB::table('marcas')->updateOrInsert([
             'idcliente' => $users[0]->id,
             'desafio' => $desafio,
@@ -173,6 +168,31 @@ class RutinasController extends Controller
             'marca' => $marca,
         ];
 
+        return response()->json($res);
+    }
+
+    public function desafios(Request $request)
+    {
+        $desafios = DB::table('desafios')
+                    ->select('nombre_desafio')
+                    ->get();
+        $params = [
+            'desafios' => $desafios
+        ];
+        return view('clientes.desafios', $params);
+    }
+
+    public function insertarDesafio(Request $request)
+    {
+        $desafio = $request->post('desafio');
+        $res =[
+            'desafio' => $desafio
+        ];
+
+        DB::table('desafios')
+            ->insert([
+                'nombre_desafio' => $desafio,
+            ]);
         return response()->json($res);
     }
 }

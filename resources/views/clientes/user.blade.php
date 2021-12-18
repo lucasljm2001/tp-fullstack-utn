@@ -60,6 +60,10 @@
     <a href="{{ route('clientes.administrar') }}">Modificar clientes</a>
     <a href="{{ route('rutinas.mostrar') }}">Modificar rutinas</a>
     <a href="{{ route('rutinas.marcas') }}">Modificar marcas</a>
+    <button href="{{ route('rutinas.desafios')}}" onclick="window.location.href='/tp-fullstack-utn/public/clientes/desafios'">Modificar desafíos</button>
+
+    <a href="{{ route('rutinas.desafios')}}">PRUEBAAAA</a>
+
     @endif
 </main>
 @endsection

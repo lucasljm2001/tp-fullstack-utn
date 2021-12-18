@@ -30,7 +30,7 @@ class SuscripcionController extends Controller
     {
         $id = intval($request->post('id'));
         $dias = intval($request->post('dias'));
-        $accion = $request->post('acc');
+        $accion = $request->post('accion');
         $diasSub = Cliente::select('dias')
                             ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
                             ->where('users.id', '=', $id)
