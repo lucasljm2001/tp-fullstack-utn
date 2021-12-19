@@ -71,6 +71,12 @@ Route::get('/clientes/admin', [\App\Http\Controllers\ClientesController::class, 
 Route::get('/clientes/desafios', [\App\Http\Controllers\RutinasController::class, 'desafios'])
     ->name('rutinas.desafios');
 
+Route::post('/clientes/desafios', [\App\Http\Controllers\RutinasController::class, 'insertarDesafio'])
+    ->name('rutinas.insertarDesafio');
+
+Route::delete('/clientes/desafios', [\App\Http\Controllers\RutinasController::class, 'eliminarDesafio'])
+    ->name('rutinas.eliminarDesafio');
+
 Route::resource('clientes', \App\Http\Controllers\ClientesController::class);
 
 Route::post('/clientes', [\App\Http\Controllers\ClientesController::class, 'inicio'])->name('clientes.inicio');

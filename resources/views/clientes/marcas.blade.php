@@ -35,7 +35,7 @@
 
                         <td><span
                         class="{{$marca->name}}{{$marca->apellido}}{{$marca->desafio}}"
-                        id="desafio">{{$marca->desafio}}</span></td>
+                        id="desafio">{{$marca->nombre_desafio}}</span></td>
 
                         <td><span 
                         class="{{$marca->name}}{{$marca->apellido}}{{$marca->desafio}}"
@@ -50,11 +50,15 @@
         <div>
             <input type="text" id="nombrein">nombre del usuario
             <input type="text" id="apellidoin">apellido del usuario
-            <input type="text" id="desafioin">desafio
+            <select name="select" id="eleccion">
+                @foreach ($desafios as $desafio)
+                    <option value="{{$desafio->nombre_desafio}}">{{$desafio->nombre_desafio}}</option>
+                @endforeach
+            </select>desafio
             <input type="text" id="marcain">marca
         </div>
         
-        <button class="agregar">Agregar Marca</button>
-        <button class="modificar">Modificar rutina</button>
+        <button class="agregar">Agregar marca</button>
+        <button class="modificar">Modificar marca</button>
 </body>
 </html>

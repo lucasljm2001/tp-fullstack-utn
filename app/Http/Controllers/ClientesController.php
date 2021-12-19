@@ -98,8 +98,9 @@ class ClientesController extends Controller
                         ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
                         ->first();
 
-        $marcas = Cliente::select('desafio', 'marca')
+        $marcas = Cliente::select('desafio', 'marca', 'nombre_desafio')
                             ->join('marcas', 'users.id', '=', 'marcas.idcliente')
+                            ->join('desafios', 'marcas.desafio', '=', 'desafios.id')
                             ->where('users.email', $usuario)
                             ->distinct()
                             ->get();;

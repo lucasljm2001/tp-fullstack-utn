@@ -32,11 +32,16 @@ class RutinasController extends Controller
         $marcas = DB::table('marcas')
                         ->join('users', 'marcas.idcliente', '=', 'users.id')
                         ->join('desafios', 'marcas.desafio', '=', 'desafios.id')
-                        ->select('name', 'apellido', 'idcliente', 'desafio', 'marca')
+                        ->select('name', 'apellido', 'idcliente', 'nombre_desafio', 'marca', 'desafio')
+                        ->get();
+
+        $desafios = DB::table('desafios')
+                        ->select('nombre_desafio')
                         ->get();
         
         $params = [
             'marcas' => $marcas,
+            'desafios' => $desafios
         ];
 
 
@@ -140,6 +145,10 @@ class RutinasController extends Controller
         $desafio = $request->post('desafio');
         $marca = $request->post('marca');
 
+        $idDesafio = DB::table('desafios')
+                            ->where('nombre_desafio', $desafio)
+                            ->select('id')
+                            ->get();
 
         $users =DB::table('users')
                 ->select('id')
@@ -154,9 +163,9 @@ class RutinasController extends Controller
             return response()->json($res);
         }
 
-        DB::table('marcas')->updateOrInsert([
+       DB::table('marcas')->updateOrInsert([
             'idcliente' => $users[0]->id,
-            'desafio' => $desafio,
+            'desafio' => $idDesafio[0]->id,
         ], [
             'marca' => $marca,
         ]);
@@ -166,6 +175,8 @@ class RutinasController extends Controller
             'idcliente' => $users[0]->id,
             'desafio' => $desafio,
             'marca' => $marca,
+            'error' => 'no',
+            'iddesafio' => $idDesafio[0]->id
         ];
 
         return response()->json($res);
@@ -193,6 +204,19 @@ class RutinasController extends Controller
             ->insert([
                 'nombre_desafio' => $desafio,
             ]);
+        return response()->json($res);
+    }
+
+    public function eliminarDesafio(Request $request)
+    {
+        $desafio = $request->post('desafio');
+        $res =[
+            'desafio' => $desafio
+        ];
+
+        DB::table('desafios')
+            ->where('nombre_desafio', $desafio,)
+            ->delete();
         return response()->json($res);
     }
 }

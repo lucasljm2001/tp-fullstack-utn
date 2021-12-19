@@ -137,7 +137,8 @@ $(document).ready(function(){
                 var texto = $('.es');
                 //console.log(turnos);
                 for (let i = 0; i < turnos.length; i++) {
-                    texto[i].innerHTML = turnos[i].dia + ' ' + turnos[i].horario;
+                    texto[i].innerHTML = turnos[i].dia + ' ' + turnos[i].horario + ' ' 
+                    + turnos[i].nombre_rutina;
                 }
                 //$('.es').html(turnos[0].dia);
             },

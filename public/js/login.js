@@ -1,14 +1,14 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('.bot').click(function () {
-        var user = $('#floatingInput').val();
-        var pass = $('#floatingPassword').val();
-        alert(user);
-        /*$.ajax({
+    $('#iniciar').click(function () {
+        var user = $('#dias').val();
+        var num = parseInt(dato, 10);
+        var id = $(this).attr("id");
+        $.ajax({
             url: "http://localhost/tp-fullstack-utn/public/clientes/ed",
             type: "POST",
             data: {
@@ -19,6 +19,6 @@ $(document).ready(function(){
                 $('#confirmacion').html("se insertaron " + response.dias + " dias al cliente " + response.cliente);
                 $('#confirmacion').css("display", "block");
             },
-        })*/
+        })
     });
-});
+});*/

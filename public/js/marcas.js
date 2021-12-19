@@ -25,13 +25,13 @@ $(document).ready(function(){
         
         $('#nombrein').val(datos[0]);
         $('#apellidoin').val(datos[1]);
-        $('#desafioin').val(datos[2]);
+        $('#eleccion').val(datos[2]);
         $('#marcain').val(datos[3]);
     });
     $('.modificar').click(function () {
         var nombre = $('#nombrein').val();
         var apellido = $('#apellidoin').val();
-        var desafio = $('#desafioin').val();
+        var desafio = $('#eleccion').val();
         var marca = $('#marcain').val();
         $.ajax({
             url: "http://localhost/tp-fullstack-utn/public/clientes/marcas",
@@ -51,22 +51,31 @@ $(document).ready(function(){
     $('.agregar').click(function () {
         var nombre = $('#nombrein').val();
         var apellido = $('#apellidoin').val();
-        var desafio = $('#desafioin').val();
+        var desafio = $('#eleccion').val()
         var marca = $('#marcain').val();
-        $.ajax({
-            url: "http://localhost/tp-fullstack-utn/public/clientes/marcas",
-            type: "POST",
-            data: {
-                nombre: nombre,
-                apellido: apellido,
-                desafio: desafio,
-                marca: marca,           
-            },
-            success: function (response) {
-                //console.log(response)
-                location.reload();
-            },
-        })
+        if ( marca.trim().length > 0 ) {
+            $.ajax({
+                url: "http://localhost/tp-fullstack-utn/public/clientes/marcas",
+                type: "POST",
+                data: {
+                    nombre: nombre,
+                    apellido: apellido,
+                    desafio: desafio,
+                    marca: marca,           
+                },
+                success: function (response) {
+                    if (response.error == 'error') {
+                        alert('El usuario ingresado no es valido')
+                    } else{
+                        location.reload();
+                    }
+                    //console.log(response)
+                },
+            })
+        } else{
+            alert('Debe ingresar una marca');
+        }
+        
     });
 });
     

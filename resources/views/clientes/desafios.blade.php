@@ -12,9 +12,18 @@
         </div>
         @foreach ($desafios as $desafio)
         <div class="row">
-            {{ $desafio }}
+            <div class="col">
+                {{ $desafio->nombre_desafio }}
+            </div>
+            <div class="col">
+                <button class="eliminar" desafio="{{ $desafio->nombre_desafio }}">Eliminar desafio</button>
+                <!--<button class="editar" desafio="{{ $desafio->nombre_desafio }}">Editar desafio</button>-->
+            </div>
         </div>
+        
         @endforeach
     </div>
+    <input type="text" id="input">
+    <button class="insertar">Insertar desafio</button>
 </body>
 @endsection

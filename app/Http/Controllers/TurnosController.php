@@ -16,9 +16,11 @@ class TurnosController extends Controller
 
     public function misTurnos(Request $request){
         $id = $request->get('id');
-        $turnos = Turno::select('*')
+        $turnos = Turno::select('turnos.dia', 'turnos.horario', 'nombre_rutina')
+                        ->join('rutinas', 'turnos.dsem', '=', 'rutinas.dia')
                         ->where('id_cliente', '=', $id)
                         ->get();
+
         $cturnos= $turnos->count();
 
         $resp =[

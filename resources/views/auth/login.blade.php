@@ -21,6 +21,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+    <script src="{{asset('js/login.js')}}"></script>
 
     <title>LOGIN</title>
   </head>
@@ -65,7 +66,7 @@
               <label for="floatingPassword">Contraseña</label>
             </div>
             <div class="d-grid">
-              <button type="submit" class="btn btn-secondary">
+              <button type="submit" class="btn btn-secondary" id="iniciar">
                 Iniciar Sesión
               </button>
               @if (Route::has('password.request'))
