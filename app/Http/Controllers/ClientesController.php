@@ -35,11 +35,11 @@ class ClientesController extends Controller
                         ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
                         ->first();*/
         $sus = DB::table('users')
-                    ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
-                    ->select('name', 'dias', 'apellido', 'users.id')
-                    ->get();        
+            ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+            ->select('name', 'dias', 'apellido', 'users.id')
+            ->get();
         $params = [
-            'sus'=> $sus
+            'sus' => $sus
         ];
         return view('clientes.admin', $params);
     }
@@ -67,8 +67,10 @@ class ClientesController extends Controller
         $usuario = $request->post('usuario');
         $contraseña = $request->post('contraseña');
 
-        DB::insert('insert into cliente (nombre, apellido, user, password) VALUES (?, ?, ?, ?)', [$nombre, 
-        $apellido, $usuario, $contraseña]);
+        DB::insert('insert into cliente (nombre, apellido, user, password) VALUES (?, ?, ?, ?)', [
+            $nombre,
+            $apellido, $usuario, $contraseña
+        ]);
 
         return 'registro exitoso';
     }
@@ -81,63 +83,71 @@ class ClientesController extends Controller
      */
     public function inicio(Request $request)
     {
-        
+
         $usuario = $request->post('usuario');
         $contraseñaIngresada = $request->post('contraseña');
-        
+
+
+
         $usuarioLogeado = Cliente::select('*')
-                                ->where('email', '=', $usuario)
-                                ->first();
+            ->where('email', '=', $usuario)
+            ->first();
 
         $credentials = [
-                            'email' => $usuario,
-                            'password' => $contraseñaIngresada,
-                                ];
+            'email' => $usuario,
+            'password' => $contraseñaIngresada,
+        ];
 
         $dias = Cliente::select('dias')
-                        ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
-                        ->first();
+            ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+            ->first();
 
         $marcas = Cliente::select('desafio', 'marca', 'nombre_desafio')
-                            ->join('marcas', 'users.id', '=', 'marcas.idcliente')
-                            ->join('desafios', 'marcas.desafio', '=', 'desafios.id')
-                            ->where('users.email', $usuario)
-                            ->distinct()
-                            ->get();;
-                
+            ->join('marcas', 'users.id', '=', 'marcas.idcliente')
+            ->join('desafios', 'marcas.desafio', '=', 'desafios.id')
+            ->where('users.email', $usuario)
+            ->distinct()
+            ->get();;
+
         $rutinas = Cliente::select('nombre_rutina', 'nombre_ejercicio', 'turnos.dsem')
-                            ->join('turnos', 'users.id', '=', 'turnos.id_cliente')
-                            ->join('rutinas', 'turnos.dsem', '=', 'rutinas.dia')
-                            ->join('ejercicios', 'rutinas.id', '=', 'ejercicios.id_rutina')
-                            ->where('users.email', $usuario)
-                            ->distinct()
-                            ->get();
+            ->join('turnos', 'users.id', '=', 'turnos.id_cliente')
+            ->join('rutinas', 'turnos.dsem', '=', 'rutinas.dia')
+            ->join('ejercicios', 'rutinas.id', '=', 'ejercicios.id_rutina')
+            ->where('users.email', $usuario)
+            ->distinct()
+            ->get();
         $rutinasNombres = [];
-        for ($i=0; $i <count($rutinas) ; $i++) { 
+        for ($i = 0; $i < count($rutinas); $i++) {
             array_push($rutinasNombres, $rutinas[$i]->nombre_rutina);
         }
         if ($usuarioLogeado == null) {
             return 'Debe ingresar un usuario';
         }
-        $parametros =[
-                'nombre' => $usuarioLogeado->name,
-                'id' => $usuarioLogeado->id,
-                'apellido' => $usuarioLogeado->apellido,
-                'user' => $usuarioLogeado->user,
-                'dias' => $dias->dias,
-                'tipo' => $usuarioLogeado->tipo,
-                'rutinas' => array_unique($rutinasNombres),
-                'ejercicios' => $rutinas,
-                'marcas' => $marcas,
-            ];
-        
+
+
+
+
+        $parametros = [
+            'nombre' => $usuarioLogeado->name,
+            'id' => $usuarioLogeado->id,
+            'apellido' => $usuarioLogeado->apellido,
+            'user' => $usuarioLogeado->user,
+            'dias' => $dias->dias,
+            'tipo' => $usuarioLogeado->tipo,
+            'rutinas' => array_unique($rutinasNombres),
+            'ejercicios' => $rutinas,
+            'marcas' => $marcas,
+        ];
+
+        $this->viewModel =   array_merge($this->viewModel, $parametros);
+
         if (Auth::attempt($credentials)) {
-            return view('clientes.user', $parametros);
+            return view('clientes.user', $this->viewModel);
         }
 
         return 'El usuario y/o la contraseña son incorrectos';
     }
-        
+
 
     /**
      * Show the form for editing the specified resource.
