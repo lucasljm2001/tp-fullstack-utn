@@ -17,6 +17,10 @@ class RutinasController extends Controller
                             ->select('nombre_rutina', 'nombre_ejercicio', 'dia')
                             ->distinct()
                             ->get();
+        $dias = DB::table('rutinas')
+                    ->select('nombre_rutina', 'dia')
+                    ->distinct()
+                    ->get();;
         $rutinasNombres = [];
         for ($i=0; $i <count($rutinas) ; $i++) { 
             array_push($rutinasNombres, $rutinas[$i]->nombre_rutina);
@@ -24,6 +28,7 @@ class RutinasController extends Controller
         $params = [
             'rutinas' => array_unique($rutinasNombres),
             'ejercicios' => $rutinas,
+            'dias' => $dias
         ];
         return view('clientes.rutinas', $params);
     }
