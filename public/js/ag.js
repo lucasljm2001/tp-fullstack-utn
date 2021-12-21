@@ -5,8 +5,9 @@ $(document).ready(function(){
         }
     });
     $('.bot').click(function () {
-        var user = $('#floatingInput').val();
-        var pass = $('#floatingPassword').val();
+        var dato = $('#dias').val();
+        var num = parseInt(dato, 10);
+        var id = $(this).attr("id");
         $.ajax({
             url: "http://localhost/tp-fullstack-utn/public/clientes/ed",
             type: "POST",
