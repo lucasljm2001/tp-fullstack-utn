@@ -117,7 +117,7 @@ class ClientesController extends Controller
             array_push($rutinasNombres, $rutinas[$i]->nombre_rutina);
         }
         if ($usuarioLogeado == null) {
-            return 'Debe ingresar un usuario';
+            return view('clientes.contra');
         }
         $parametros =[
                 'nombre' => $usuarioLogeado->name,
@@ -135,7 +135,7 @@ class ClientesController extends Controller
             return view('clientes.user', $parametros);
         }
 
-        return 'El usuario y/o la contraseña son incorrectos';
+        return view('clientes.contra');
     }
         
 

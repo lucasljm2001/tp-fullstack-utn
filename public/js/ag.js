@@ -7,8 +7,7 @@ $(document).ready(function(){
     $('.bot').click(function () {
         var user = $('#floatingInput').val();
         var pass = $('#floatingPassword').val();
-        alert(user);
-        /*$.ajax({
+        $.ajax({
             url: "http://localhost/tp-fullstack-utn/public/clientes/ed",
             type: "POST",
             data: {
@@ -19,6 +18,6 @@ $(document).ready(function(){
                 $('#confirmacion').html("se insertaron " + response.dias + " dias al cliente " + response.cliente);
                 $('#confirmacion').css("display", "block");
             },
-        })*/
+        })
     });
 });
