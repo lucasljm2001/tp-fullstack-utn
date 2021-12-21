@@ -27,6 +27,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Projects</a>
                 </li>
+                @auth
+                @else
+                <li class="nav-item">
+                    <a class="btn btn-outline-warning" href="{{ route('login') }}">Log In</a>
+                </li>
+                @endauth
             </ul>
             <!-- Left links -->
         </div>
@@ -39,10 +45,11 @@
                 <i class="fas fa-shopping-cart"></i>
             </a> -->
 
+            @auth
             <!-- Notifications -->
             <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-calendar-week fs-lg"></i>
-                <span class="badge rounded-pill badge-notification bg-danger">{{$dias}}</span>
+                <span class="badge rounded-pill badge-notification bg-danger">{{$dias ?? ''}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
@@ -71,6 +78,8 @@
                     <a class="dropdown-item" href="{{ route('clientes.index') }}">Cerrar sesion</a>
                 </li>
             </ul>
+            @else
+            @endauth
         </div>
         <!-- Right elements -->
     </div>
