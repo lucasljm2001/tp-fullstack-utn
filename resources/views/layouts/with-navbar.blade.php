@@ -53,13 +53,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                    <a class="dropdown-item" href="#">Some news</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Another news</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="{{ route('turnos.mostrar', ['id'=>$id])}}">Mis turnos</a>
                 </li>
             </ul>
 
@@ -69,10 +63,10 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                    <a class="dropdown-item" href="#">My profile</a>
+                    <a class="dropdown-item disabled" href="#">Mi perfil</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item disabled" href="#">Ajustes</a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="{{ route('clientes.index') }}">Cerrar sesion</a>

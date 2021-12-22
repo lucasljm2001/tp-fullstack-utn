@@ -1,5 +1,6 @@
 @extends('layouts.with-navbar')
 
+@section('title', 'Inicio')
 
 @section('body')
 <!-- Navbar -->
@@ -29,17 +30,17 @@
             <tr>
                 <td>{{$rutina}}
                     @foreach ($ejercicios as $ejercicio)
-                        @if($rutina == $ejercicio->nombre_rutina)
-                            {{$ejercicio->nombre_ejercicio}}
-                        @endif
+                    @if($rutina == $ejercicio->nombre_rutina)
+                    {{$ejercicio->nombre_ejercicio}}
+                    @endif
                     @endforeach
-                    
+
                 </td>
                 <td>
-                @foreach ($semanas as $semana)
-                        @if($rutina == $semana->nombre_rutina)
-                            {{$semana->dsem}}
-                        @endif
+                    @foreach ($semanas as $semana)
+                    @if($rutina == $semana->nombre_rutina)
+                    {{$semana->dsem}}
+                    @endif
                     @endforeach
                 </td>
             </tr>
@@ -71,11 +72,17 @@
     </table>
     @endisset
 
-    @if ($tipo ?? '' =='admin')
+    @auth
+
+    @if ($tipo =='admin')
     <a href="{{ route('clientes.administrar') }}">Modificar clientes</a>
     <a href="{{ route('rutinas.mostrar') }}">Modificar rutinas</a>
     <a href="{{ route('rutinas.marcas') }}">Modificar marcas</a>
     <button href="{{ route('rutinas.desafios')}}" onclick="window.location.href='/tp-fullstack-utn/public/clientes/desafios'">Modificar desafíos</button>
     @endif
+
+    @else
+
+    @endauth
 </main>
 @endsection
