@@ -19,7 +19,7 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-start">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ||  Request::is('home') ? 'active' : ''}}" href="#">Home</a>
+                    <a class="nav-link {{ Request::is('/') ||  Request::is('home') ? 'active' : ''}}" href="{{route('user.home')}}">Home</a>
                 </li>
                 <li class="nav-item {{ Request::is('team') ? 'active' : ''}}">
                     <a class="nav-link" href="#">Team</a>
