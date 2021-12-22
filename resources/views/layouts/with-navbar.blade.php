@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                <img src="./assets/brand.png" height="45" width="45" alt="App logo" loading="lazy" />
+                <img src="{{asset('assets/brand.png')}}" height="45" width="45" alt="App logo" loading="lazy" />
             </a>
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-start">
@@ -49,17 +49,17 @@
             <!-- Notifications -->
             <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-calendar-week fs-lg"></i>
-                <span class="badge rounded-pill badge-notification bg-danger">{{ $dias ?? '0'}}</span>
+                <span class="badge rounded-pill badge-notification bg-danger">{{ Session::get('dias')?? '0'}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                    <a class="dropdown-item" href="{{ route('turnos.mostrar', ['id'=>$id])}}">Mis turnos</a>
+                    <a class="dropdown-item" href="{{ route('turnos.mostrar', ['id'=>Session::get('id')])}}">Mis turnos</a>
                 </li>
             </ul>
 
             <!-- Avatar -->
             <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                <img src="{{$profile ?? 'https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png'}}" width="45" height="45" class="rounded-circle" loading="lazy" alt="Black and White Portrait of a Man" />
+                <img src="{{Session::get('profile') ?? 'https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png'}}" width="45" height="45" class="rounded-circle" loading="lazy" alt="Black and White Portrait of a Man" />
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
