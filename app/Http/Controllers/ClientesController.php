@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Cliente;
+
 use Illuminate\Support\Facades\Session;
 
 class ClientesController extends Controller
@@ -134,7 +135,7 @@ class ClientesController extends Controller
 
 
         if ($usuarioLogeado == null) {
-            return view('clientes.contra');
+            return redirect('/login');
         }
 
 
@@ -151,18 +152,23 @@ class ClientesController extends Controller
             'semanas' => $semana
         ];
 
-
-        foreach ($parametros as $key => $value) {
-            Session::put($key, $value);
-        }
-
-        $this->viewModel =   array_merge($this->viewModel, Session::all());
-
         if (Auth::attempt($credentials)) {
+
+            foreach ($parametros as $key => $value) {
+                Session::put($key, $value);
+            }
+
+            $this->viewModel =   array_merge($this->viewModel, Session::all());
+
+            Session::remove('invalidPw');
+
             return redirect('/');
+        } else {
+            Session::put('invalidPw', 'is-invalid');
         }
 
-        return view('clientes.contra');
+
+        return redirect('/login');
     }
 
 

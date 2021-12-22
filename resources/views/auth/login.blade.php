@@ -27,12 +27,10 @@
                     <label for="floatingInput" class="form-label">Mail</label>
                 </div>
                 <div class="form-outline my-1">
-                    <input type="password" class="form-control form-control-lg" id="floatingPassword" placeholder="Contraseña" name="contraseña" />
-                    @error('password')
+                    <input type="password" class="form-control form-control-lg {{ Session::get('invalidPw') ?? '' }}" id="floatingPassword" placeholder="Contraseña" name="contraseña" />
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong>Contraseña incorrecta</strong>
                     </span>
-                    @enderror
                     <label for="floatingPassword" class="form-label">Contraseña</label>
                 </div>
                 <div class="d-grid">
