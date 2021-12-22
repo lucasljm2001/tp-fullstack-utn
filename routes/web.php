@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('user.login');
+    return view('clientes.user', Session::all());
 });
 
 Auth::routes();

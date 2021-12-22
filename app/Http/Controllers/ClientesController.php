@@ -159,7 +159,7 @@ class ClientesController extends Controller
         $this->viewModel =   array_merge($this->viewModel, Session::all());
 
         if (Auth::attempt($credentials)) {
-            return view('clientes.user', $this->viewModel);
+            return redirect('/');
         }
 
         return view('clientes.contra');
