@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Cliente;
-
+use Error;
 use Illuminate\Support\Facades\Session;
 
 class ClientesController extends Controller
@@ -104,6 +104,15 @@ class ClientesController extends Controller
             ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
             ->first();
 
+
+        $profile = null;
+
+
+        try {
+            $profile = $usuarioLogeado->profile_url;
+        } catch (Error $e) {
+        }
+
         $marcas = Cliente::select('desafio', 'marca', 'nombre_desafio')
             ->join('marcas', 'users.id', '=', 'marcas.idcliente')
             ->join('desafios', 'marcas.desafio', '=', 'desafios.id')
@@ -149,7 +158,8 @@ class ClientesController extends Controller
             'rutinas' => $rutinasUnicas,
             'ejercicios' => $rutinas,
             'marcas' => $marcas,
-            'semanas' => $semana
+            'semanas' => $semana,
+            'profile' => $profile
         ];
 
         if (Auth::attempt($credentials)) {
