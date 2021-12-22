@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
+require __DIR__ . '/api/clientes.php';
+
 Route::get('/', function () {
-    return view('clientes.user', Session::all());
+    return redirect("home");
 });
 
 Auth::routes();
-
-require __DIR__ . '/api/clientes.php';
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('user.home');
 
