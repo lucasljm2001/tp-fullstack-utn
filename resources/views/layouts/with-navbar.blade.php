@@ -49,7 +49,7 @@
             <!-- Notifications -->
             <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-calendar-week fs-lg"></i>
-                <span class="badge rounded-pill badge-notification bg-danger">{{$dias ?? ''}}</span>
+                <span class="badge rounded-pill badge-notification bg-danger">{{ $dias ?? '0'}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
@@ -65,7 +65,7 @@
 
             <!-- Avatar -->
             <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" width="45" height="45" class="rounded-circle" loading="lazy" alt="Black and White Portrait of a Man" />
+                <img src="{{$profile ?? 'https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png'}}" width="45" height="45" class="rounded-circle" loading="lazy" alt="Black and White Portrait of a Man" />
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>

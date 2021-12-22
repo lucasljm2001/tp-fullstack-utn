@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Session;
 
 class ClientesController extends Controller
 {
@@ -137,8 +138,6 @@ class ClientesController extends Controller
         }
 
 
-
-
         $parametros = [
             'nombre' => $usuarioLogeado->name,
             'id' => $usuarioLogeado->id,
@@ -152,7 +151,12 @@ class ClientesController extends Controller
             'semanas' => $semana
         ];
 
-        $this->viewModel =   array_merge($this->viewModel, $parametros);
+
+        foreach ($parametros as $key => $value) {
+            Session::put($key, $value);
+        }
+
+        $this->viewModel =   array_merge($this->viewModel, Session::all());
 
         if (Auth::attempt($credentials)) {
             return view('clientes.user', $this->viewModel);
