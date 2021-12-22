@@ -116,10 +116,22 @@ class ClientesController extends Controller
             ->where('users.email', $usuario)
             ->distinct()
             ->get();
+
+        $semana = Cliente::select('nombre_rutina', 'turnos.dsem')
+            ->join('turnos', 'users.id', '=', 'turnos.id_cliente')
+            ->join('rutinas', 'turnos.dsem', '=', 'rutinas.dia')
+            ->join('ejercicios', 'rutinas.id', '=', 'ejercicios.id_rutina')
+            ->where('users.email', $usuario)
+            ->distinct()
+            ->get();
         $rutinasNombres = [];
         for ($i = 0; $i < count($rutinas); $i++) {
             array_push($rutinasNombres, $rutinas[$i]->nombre_rutina);
         }
+
+        $rutinasUnicas = array_unique($rutinasNombres);
+
+
         if ($usuarioLogeado == null) {
             return view('clientes.contra');
         }
@@ -134,9 +146,10 @@ class ClientesController extends Controller
             'user' => $usuarioLogeado->user,
             'dias' => $dias->dias,
             'tipo' => $usuarioLogeado->tipo,
-            'rutinas' => array_unique($rutinasNombres),
+            'rutinas' => $rutinasUnicas,
             'ejercicios' => $rutinas,
             'marcas' => $marcas,
+            'semanas' => $semana
         ];
 
         $this->viewModel =   array_merge($this->viewModel, $parametros);

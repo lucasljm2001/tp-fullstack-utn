@@ -1,5 +1,5 @@
 body{
-    background-image: url(http://localhost/tp-fullstack-utn/public/images/fondo.jpg);
+    background-image: url(http://localhost/tp-fullstack-utn/public/images/marcas.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -27,6 +27,7 @@ body{
     margin-top: 20px;
     height: 330px;
     border-radius: 5px;
+    opacity: 95%;
 }
 .inp{
     display: flex;
@@ -34,7 +35,8 @@ body{
 }
 .rutinas{
     position: relative;
-    bottom: 320px;
+    left: 100px;
+    opacity: 95%;
 }
 button{
     margin-top: 30px;

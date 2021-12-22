@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{asset('js/marcas.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('css/marcas.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Document</title>
 </head>
@@ -15,7 +16,7 @@
 <div class="container costado">
     <div class="form-group">
         <label for="formGroupExampleInput">Nombre</label>
-        <input type="text" class="form-control inp" id="nombrein" placeholder="Nombre y apellido">
+        <input type="text" class="form-control inp" id="nombrein" placeholder="Nombre">
     </div>
     <div class="form-group">
         <label for="formGroupExampleInput">Apellido</label>
@@ -33,8 +34,8 @@
         <label for="formGroupExampleInput2">Marca</label>
         <input type="text" class="form-control inp" id="marcain" placeholder="Marca">
     </div>
-    <button type="button" class="btn btn-outline-secondary agregar">Agregar rutina</button>
-    <button type="button" class="btn btn-outline-secondary modificar">Modificar rutina</button>
+    <button type="button" class="btn btn-outline-secondary agregar">Agregar marca</button>
+    <button type="button" class="btn btn-outline-secondary modificar">Modificar marca</button>
 </div>
 
 <div class="container mt-3 mb-4">
@@ -46,7 +47,7 @@
             <thead>
               <tr>
                 <th>Usuario</th>
-                <th class="text-center">Marca</th>
+                <th class="">Marca</th>
                 <th class="action text-right">Accion</th>
               </tr>
             </thead>
@@ -72,13 +73,14 @@
                   </div>
                   </td>
                   <td>
-                  <a class="candidate-list-favourite order-2 text-danger" href="#"><i class="far fa-calendar"></i></a>
                   <span class="candidate-list-time order-1 {{$marca->name}}{{$marca->apellido}}{{$marca->desafio}}"
                   id="marca">{{$marca->marca}}</span>
                 </td>
                 <td>
                   <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                    <li><a href="#" class="text-info {{$marca->name}}{{$marca->apellido}}{{$marca->desafio}}" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt editar" id="marca"></i></a></li>
+                    <li class="text-info editar" id="{{$marca->name}}{{$marca->apellido}}{{$marca->desafio}}"
+                    ><a href="#"  data-toggle="tooltip" title="" data-original-title="Edit"
+                    ><i class="fas fa-pencil-alt editar" id="marca"></i></a></li>
                   </ul>
                 </td>
             @endforeach    

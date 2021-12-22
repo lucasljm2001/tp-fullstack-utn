@@ -29,9 +29,17 @@
             <tr>
                 <td>{{$rutina}}
                     @foreach ($ejercicios as $ejercicio)
-                    @if($rutina == $ejercicio->nombre_rutina)
-                    {{$ejercicio->nombre_ejercicio}}/{{$ejercicio->dsem}}
-                    @endif
+                        @if($rutina == $ejercicio->nombre_rutina)
+                            {{$ejercicio->nombre_ejercicio}}
+                        @endif
+                    @endforeach
+                    
+                </td>
+                <td>
+                @foreach ($semanas as $semana)
+                        @if($rutina == $semana->nombre_rutina)
+                            {{$semana->dsem}}
+                        @endif
                     @endforeach
                 </td>
             </tr>
