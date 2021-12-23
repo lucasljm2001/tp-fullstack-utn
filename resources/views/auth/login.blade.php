@@ -18,7 +18,7 @@
             <form action="{{ route('clientes.inicio') }}" method="post">
                 @csrf
                 <div class="form-outline my-3 form-white">
-                    <input type="email" class="form-control form-control-lg text-light" id="floatingInput" placeholder="tu@mail.com" name="usuario" />
+                    <input type="email" class="form-control form-control-lg text-light" id="floatingInput" placeholder="tu@mail.com" name="usuario" required autocomplete="email" autofocus />
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                     <label for="floatingInput" class="form-label text-light">Mail</label>
                 </div>
                 <div class="form-outline my-1 form-white">
-                    <input type="password" class="form-control form-control-lg {{ Session::get('invalidPw') ?? '' }} text-light" id="floatingPassword" placeholder="Contraseña" name="contraseña" />
+                    <input type="password" class="form-control form-control-lg {{ Session::get('invalidPw') ?? '' }} text-light" id="floatingPassword" placeholder="Contraseña" name="contraseña" required autocomplete="password" />
                     <span class="invalid-feedback" role="alert">
                         <strong>Contraseña incorrecta</strong>
                     </span>
