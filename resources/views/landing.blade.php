@@ -17,12 +17,12 @@
 
 <div id="section1">
     <div class="container">
-        <div class="row justify-content-end align-items-center">
+        <div class="row space-between align-items-center">
             <div class="col-8 text-white">
                 <h1>My Gym</h1>
                 <h2>Queremos hacerte lindo y fuerte papito</h2>
             </div>
-            <div class="col-4">
+            <div id="animacion" class="col-4">
                 <iframe src='https://my.spline.design/cylindersanimationcopy-43c0e5e1ed68a1131b25d698596a2193/' frameborder='0' width='100%' height='700px'></iframe>
             </div>
         </div>

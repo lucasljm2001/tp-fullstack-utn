@@ -8,30 +8,39 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top user-select-none">
     <!-- Container wrapper -->
-    <div class="container-fluid">
+    <div class="container-fluid justify-content-start">
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
-
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <img src="{{asset('assets/brand.png')}}" height="45" width="45" alt="App logo" loading="lazy" />
+        </a>
+        <h3 style="font-family: 'Bebas Neue', cursive">My Gym</h3>
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
-            <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                <img src="{{asset('assets/brand.png')}}" height="45" width="45" alt="App logo" loading="lazy" />
-            </a>
-            <h3 style="font-family: 'Bebas Neue', cursive">My Gym</h3>
+            
+            
             <!-- Left links -->
             
         </div>
-        <!-- Collapsible wrapper -->
 
+        <!-- Collapsible wrapper -->
         <!-- Right elements -->
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-end">
             <!-- Icon
             <a class="text-reset me-3" href="#">
                 <i class="fas fa-shopping-cart"></i>
             </a> -->
+
+        </div>
+        <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+    <div class="container-fluid justify-content-end">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Right links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-start">
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('/') ||  Request::is('home') ? 'active' : ''}}" href="{{route('user.home')}}" style="font-family: 'Montserrat', sans-serif">
@@ -57,7 +66,8 @@
                 </li>
                 @endauth
             </ul>
-            @auth
+        </div>
+        @auth
             <!-- Notifications -->
             <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-calendar-week fs-lg"></i>
@@ -86,10 +96,8 @@
             </ul>
             @else
             @endauth
-        </div>
-        <!-- Right elements -->
     </div>
-    <!-- Container wrapper -->
+
 </nav>
 <!-- Navbar -->
 @endsection
