@@ -1,0 +1,15 @@
+#section1 {
+    background: url('../assets/bg-landing.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 100px;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: medium;
+}
