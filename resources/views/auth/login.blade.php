@@ -34,7 +34,7 @@
                     <label for="floatingPassword" class="form-label text-light">Contraseña</label>
                 </div>
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-secondary mb-2" id="iniciar">
+                    <button type="submit" class="btn btn-secondary btn-rounded mb-2" id="iniciar">
                         Iniciar Sesión
                     </button>
                     @if (Route::has('password.request'))

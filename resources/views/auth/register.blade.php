@@ -15,7 +15,7 @@
 <section class="vh-100 register-form">
     <div class="container h-100 text-light">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-8 register-container">
+            <div class="col register-container">
                 <!-- Logo Image -->
                 <div class="container text-center border-2 mt-2 mb-2">
                     <img src="{{asset('assets/brand.png')}}" height="300" width="120" class="img-fluid mt-2" />
@@ -82,13 +82,13 @@
                             <label for="password-confirm" class="form-label">{{ __('Confirmar Contraseña') }}</label>
                         </div>
                     </div>
-
-                    <div class="row mb-0">
-                        <div class="col">
-                            <button type="submit" class="btn btn-secondary btn-rounded">
-                                {{ __('Registrarme') }}
-                            </button>
-                        </div>
+                    <div class="d-grid mb-0">
+                        <button type="submit" class="btn btn-secondary btn-rounded mb-2">
+                            {{ __('Registrarme') }}
+                        </button>
+                        @if (Route::has('login'))
+                        <a class="mb-2 text-light" href="{{ route('login') }}">{{ __('Ya tengo cuento, Iniciar sesión') }}</a>
+                        @endif
                     </div>
                 </form>
             </div>
