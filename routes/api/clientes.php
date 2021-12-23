@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/clientes/turnos/:id', [\App\Http\Controllers\TurnosController::class, 'mostrar'])
     ->name('turnos.mostrar');
 

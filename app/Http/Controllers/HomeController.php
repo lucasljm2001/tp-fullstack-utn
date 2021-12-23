@@ -15,6 +15,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('clientes.user', array_merge($this->viewModel, Session::all()));
+        return view('landing', array_merge($this->viewModel, Session::all()));
     }
 }

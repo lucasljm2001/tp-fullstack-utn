@@ -9,7 +9,7 @@
 <main class="container">
 
     <div>
-        <h1>Bienvenido {{$nombre ?? 'NO'}} {{$apellido?? 'LOGGEADO'}}</h1>
+        <h1>Bienvenido {{$nombre ?? 'NO'}} {{$apellido?? 'LOGUEADO'}}</h1>
     </div>
     <div>
         <h2>Tiene {{$dias ?? ''}} dias de suscripcion y es {{$tipo ?? '' ?? 'NO LOGGEADO'}}</h2>
@@ -85,4 +85,11 @@
 
     @endauth
 </main>
+<footer>
+    
+</footer>
+@endsection
+
+@section('customJS')
+<script type="text/javascript" src="{{asset('js/user.js')}}"></script>
 @endsection
