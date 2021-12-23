@@ -1,5 +1,9 @@
 @extends('layouts.bootstrap5')
 
+@section('customCSS')
+<link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+@endsection
+
 @section('body')
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top user-select-none">
@@ -16,25 +20,9 @@
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <img src="{{asset('assets/brand.png')}}" height="45" width="45" alt="App logo" loading="lazy" />
             </a>
+            <h3 style="font-family: 'Bebas Neue', cursive">My Gym</h3>
             <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-start">
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ||  Request::is('home') ? 'active' : ''}}" href="{{route('user.home')}}">Home</a>
-                </li>
-                <li class="nav-item {{ Request::is('team') ? 'active' : ''}}">
-                    <a class="nav-link" href="#">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('projects') ? 'active' : ''}}" href="#">Projects</a>
-                </li>
-                @auth
-                @else
-                <li class="nav-item">
-                    <a class="btn btn-outline-warning" href="{{ route('login') }}">Log In</a>
-                </li>
-                @endauth
-            </ul>
-            <!-- Left links -->
+            
         </div>
         <!-- Collapsible wrapper -->
 
@@ -44,7 +32,31 @@
             <a class="text-reset me-3" href="#">
                 <i class="fas fa-shopping-cart"></i>
             </a> -->
-
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-start">
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('/') ||  Request::is('home') ? 'active' : ''}}" href="{{route('user.home')}}" style="font-family: 'Montserrat', sans-serif">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item {{ Request::is('team') ? 'active' : ''}}">
+                    <a class="nav-link" href="#" style="font-family: 'Montserrat', sans-serif">
+                        Team
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('projects') ? 'active' : ''}}" href="#" style="font-family: 'Montserrat', sans-serif">
+                        Projects
+                    </a>
+                </li>
+                @auth
+                @else
+                <li class="nav-item">
+                    <a class="btn btn-outline-warning" href="{{ route('login') }}" style="font-family: 'Montserrat', sans-serif">
+                        Log In
+                    </a>
+                </li>
+                @endauth
+            </ul>
             @auth
             <!-- Notifications -->
             <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -63,10 +75,10 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                    <a class="dropdown-item disabled" href="#">Mi perfil</a>
+                    <a class="dropdown-item" href="{{ route('clientes.inicio') }}">Mi perfil</a>
                 </li>
                 <li>
-                    <a class="dropdown-item disabled" href="#">Ajustes</a>
+                    <a class="dropdown-item" href="#">Ajustes</a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="{{ route('clientes.index') }}">Cerrar sesion</a>
