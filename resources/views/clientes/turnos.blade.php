@@ -46,63 +46,73 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">Lunes</th>
-                        <td>09:00</td>
+                <tr>
+                        <th scope="row"><button class="btn btn-outline-secondary dia domingo" id="0" codigo ="0">Domingo</button></th>
+                        <td class="es">09:00</td>
                         <td>
-                            <button class="btn btn-success btn-rounded">
+                            <button class="btn btn-success btn-rounded hor" id="09:00:0">
                                 <i class="far fa-check-circle"></i>
-                                20
+                                <span id="turnos 09:00:00" horario="09:00:00">20</span>
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Martes</th>
-                        <td>11:00</td>
+                        <th scope="row"><button class="btn btn-outline-secondary dia lunes" id="1" codigo ="1">Lunes</button></th>
+                        <td class="es">10:00</td>
                         <td>
-                            <button class="btn btn-success btn-rounded">
+                            <button class="btn btn-success btn-rounded hor" id="10:00:0">
                                 <i class="far fa-check-circle"></i>
-                                17
+                                <span id="10:00:00" class="turnos 10:00:00">20</span>
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Miercoles</th>
-                        <td>14:00</td>
+                        <th scope="row"><button class="btn btn-outline-secondary dia martes" id="2" codigo ="2">Martes</button></th>
+                        <td class="es" class="turnos">11:00</td>
                         <td>
-                            <button class="btn btn-primary btn-rounded">
+                            <button class="btn btn-success btn-rounded hor" id="11:00:0">
                                 <i class="far fa-check-circle"></i>
-                                14
+                                <span id="11:00:00" class="turnos 11:00:00">20</span>
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Jueves</th>
-                        <td>16:00</td>
+                        <th scope="row"><button class="btn btn-outline-secondary dia miercoles" id="3" codigo ="3">Miercoles</button></th>
+                        <td class="es" class="turnos">15:00</td>
                         <td>
-                            <button class="btn btn-warning btn-rounded">
+                            <button class="btn btn-primary btn-rounded hor" id="15:00:0">
                                 <i class="far fa-check-circle"></i>
-                                10
+                                <span id="15:00:00" class="turnos 15:00:00">20</span>
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Viernes</th>
-                        <td>18:00</td>
+                        <th scope="row"><button class="btn btn-outline-secondary dia jueves" id="4" codigo ="4">Jueves</button></th>
+                        <td class="es">16:00</td>
                         <td>
-                            <button class="btn btn-danger btn-rounded">
+                            <button class="btn btn-warning btn-rounded hor" id="16:00:0">
                                 <i class="far fa-check-circle"></i>
-                                5
+                                <span class="turnos 16:00:00" id="16:00:00">20</span>
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Sábado</th>
-                        <td>20:00</td>
+                        <th scope="row"><button class="btn btn-outline-secondary dia viernes" id="5" codigo ="5">Viernes</button></th>
+                        <td class="es">17:00</td>
                         <td>
-                            <button class="btn btn-rounded disabled">
+                            <button class="btn btn-danger btn-rounded hor" id="17:00:0">
                                 <i class="far fa-check-circle"></i>
-                                0
+                                <span id="17:00:00" class="turnos 17:00:00">20</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><button class="btn btn-outline-secondary dia sabado" id="6" codigo ="6">Sábado</button></th>
+                        <td class="es">18:00</td>
+                        <td>
+                            <button class="btn btn-rounded disabled hor" id="18:00:0">
+                                <i class="far fa-check-circle"></i>
+                                <span id="18:00:00" class="turnos 18:00:00">20</span>
                             </button>
                         </td>
                     </tr>
@@ -110,107 +120,5 @@
             </table>
         </div>
     </section>
-
-
-    <div class="row">
-        <div class="col-md-3 lista">
-            <div class="row">
-                <button class="btn btn-primary" id="turnos">Mis turnos</button>
-            </div>
-            <div class="row">
-                elija su turno
-            </div>
-            <div class="row">
-                <div class="row">
-                    <button class="btn btn-primary dia domingo" id="0">domingo</button>
-                </div>
-                <button class="btn btn-primary dia lunes" id="1">lunes</button>
-            </div>
-            <div class="row">
-                <button class="btn btn-primary dia martes" id="2">martes</button>
-            </div>
-            <div class="row">
-                <button class="btn btn-primary dia miercoles" id="3">miercoles</button>
-            </div>
-            <div class="row">
-                <button class="btn btn-primary dia jueves" id="4">jueves</button>
-            </div>
-            <div class="row">
-                <button class="btn btn-primary dia viernes" id="5">viernes</button>
-            </div>
-            <div class="row">
-                <button class="btn btn-primary dia sabado" id="6">sabado</button>
-            </div>
-        </div>
-        <div class="col-md-9 lista" id="modificar">
-            <div class="col es">
-                <span>Horarios disponibles el </span><span id="diapantalla"></span>
-            </div>
-            <div class="col es">
-                Elija su horario
-            </div>
-            <div class="col es">
-                <button class="btn btn-primary hor" id="09:00:0">9:00
-                    <span class="turnos" id="09:00:00">20</span>
-                    <span>turnos disponibles</span>
-                </button>
-            </div>
-            <div class="es">
-                <div class="col">
-                    <button class="btn btn-primary hor" id="10:00:0">10:00
-                        <span class="turnos" id="10:00:00">20</span>
-                        <span>turnos disponibles</span>
-                    </button>
-
-                </div>
-            </div>
-            <div class="es">
-                <div class="col">
-                    <button class="btn btn-primary hor" id="11:00:0">11:00
-                        <span class="turnos" id="11:00:00">20</span>
-                        <span>turnos disponibles</span>
-                    </button>
-
-                </div>
-            </div>
-            <div class="es">
-                <div class="col">
-                    <button class="btn btn-primary hor" id="15:00:0">15:00
-                        <span class="turnos" id="15:00:00">20</span>
-                        <span>turnos disponibles</span>
-                    </button>
-
-                </div>
-            </div>
-            <div class="es">
-                <div class="col">
-                    <button class="btn btn-primary hor" id="16:00:0">16:00
-                        <span class="turnos" id="16:00:00">20</span>
-                        <span>turnos disponibles</span>
-                    </button>
-
-                </div>
-            </div>
-            <div class="es">
-                <div class="col">
-                    <button class="btn btn-primary hor" id="17:00:0">17:00
-                        <span class="turnos" id="17:00:00">20</span>
-                        <span>turnos disponibles</span>
-                    </button>
-
-                </div>
-            </div>
-            <div class="es">
-                <div class="col">
-                    <button class="btn btn-primary hor" id="18:00:0">18:00
-                        <span class="turnos" id="18:00:00">20</span>
-                        <span>turnos disponibles</span>
-                    </button>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
 </body>
 @endsection

@@ -25,7 +25,7 @@ function RefreshEventsListener(fecha, ru, dsem) {
      //ReAsociamos
      $(".hor").on("click", function() {
         var hora = $(this).attr("id") + '0';
-         $.ajax({
+        $.ajax({
             url: "http://localhost/tp-fullstack-utn/public/clientes/turnosprueba",
             type: "POST",
             data: {
@@ -76,22 +76,22 @@ $(document).ready(function(){
         var codigo = 0;
         var diaActual = document.getElementById('diapantalla').innerHTML;
         switch (diaActual) {
-            case 'lunes':
+            case 'Lunes':
                 codigo = 1;
                 break;
-            case 'martes':
+            case 'Martes':
                 codigo = 2;
                 break;
-            case 'miercoles':
+            case 'Miercoles':
                 codigo = 3;
                 break;
-            case 'jueves':
+            case 'Jueves':
                 codigo = 4;
                 break;
-            case 'viernes':
+            case 'Viernes':
                 codigo = 5;
                 break;
-            case 'sabado':
+            case 'Sabado':
                 codigo = 6;
                 break;
             default:
@@ -119,7 +119,7 @@ $(document).ready(function(){
                 for (let i = 0; i < horarios.length; i++) {
                    document.getElementById(horarios[i]).innerHTML = 20-response.turnos[horarios[i]];
                 }
-                document.getElementById('diapantalla').innerHTML = dia;
+                //document.getElementById('diapantalla').innerHTML = dia;
                 RefreshEventsListener(fechaFinal, arrayrut, dia)
             },
         })
@@ -146,22 +146,24 @@ $(document).ready(function(){
     });
     $('.dia').click(function () {
        var dia = $(this).html();
+       var diaspl = dia.split("<");
        var horarios = document.getElementsByClassName('es');
-       var dsem = $(this).attr('id');
+       var dsem = $(this).attr('codigo');
+       $(this).attr('id', 'diapantalla');
        var sum = parseInt(dsem, 10);
        for (let i = 0; i < horarios.length; i++) {
            horarios[i].innerHTML = originales[i];
-       }
-       var Fecha1 = $('#dia1').html();
-       var split = Fecha1.split("/");
-       var newFecha = `${split[1]}/${split[0]}/${split[2]}`
-       var fechaSum = addDays(newFecha, sum).toLocaleDateString();
-       var fechaSplit = fechaSum.split('/');
-       var fechaFinal = `${fechaSplit[2]}-${fechaSplit[1]}-${fechaSplit[0]}`;
-       var horarios = [];
-       $('.turnos').each(function() {
+        }
+        var Fecha1 = $('#dia1').html();
+        var split = Fecha1.split("/");
+        var newFecha = `${split[1]}/${split[0]}/${split[2]}`
+        var fechaSum = addDays(newFecha, sum).toLocaleDateString();
+        var fechaSplit = fechaSum.split('/');
+        var fechaFinal = `${fechaSplit[2]}-${fechaSplit[1]}-${fechaSplit[0]}`;
+        var horarios = [];
+        $('.turnos').each(function() {
             horarios.push($(this).attr('id'));
-       });
+        });
         $.ajax({
             url: "http://localhost/tp-fullstack-utn/public/clientes/turnosdia",
             type: "GET",
@@ -171,12 +173,25 @@ $(document).ready(function(){
             },
             success: function (response) {
                 for (let i = 0; i < horarios.length; i++) {
-                   document.getElementById(horarios[i]).innerHTML = 20-response.turnos[horarios[i]];
+                   var disponibles = 20-response.turnos[horarios[i]];
+                   document.getElementById(horarios[i]).innerHTML = disponibles;
+                   var hora = horarios[i].substring(0, horarios[i].length - 1);
+                   if (disponibles > 15) {
+                       //$('#' + horarios[i]).attr('class', 'btn btn-success btn-rounded hor');
+                       document.getElementById(hora).setAttribute('class', 'btn btn-success btn-rounded hor');
+                   }else if(disponibles > 10){
+                        //$('#' + horarios[i]).attr('class', 'btn btn-warning btn-rounded hor');
+                        document.getElementById(hora).setAttribute('class', 'btn btn-warning btn-rounded hor');
+                   } else if(disponibles < 5){
+                        //$('#' + horarios[i]).attr('class', 'btn btn-danger btn-rounded hor');
+                        document.getElementById(hora).setAttribute('class', 'btn btn-danger btn-rounded hor');
+                   } else if(disponibles == 0){
+                        //$('#' + horarios[i]).attr('class', 'btn btn-rounded disabled hor');
+                        document.getElementById(hora).setAttribute('class', 'btn btn-rounded disabled hor');
+                   }
                 }
-                document.getElementById('diapantalla').innerHTML = dia;
-                RefreshEventsListener(fechaFinal, arrayrut, dia)
+                RefreshEventsListener(fechaFinal, arrayrut, diaspl[0])
             },
         })
     });
-
 });
