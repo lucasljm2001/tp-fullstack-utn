@@ -28,28 +28,46 @@
         </div>
     </div>
 </div>
-<section>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorem.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, laborum?
-    </p>    
+<section id="section2">
+    <div class="container">
+        <div class="row space-between align-items-center">
+            <div class="col-8 text-white">
+                <h1>My Gym</h1>
+                <h2>Queremos hacerte lindo y fuerte papito</h2>
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+    </div>
 </section>
-<section>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorem.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, laborum?
-    </p>    
+<section id="section3">
+    <div class="container">
+        <div class="row space-between align-items-center">
+            <div class="col-8 text-white">
+                <h1>My Gym</h1>
+                <h2>Queremos hacerte lindo y fuerte papito</h2>
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+    </div>
 </section>
-<section>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorem.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, laborum?
-    </p>    
+<section id="section4">
+    <div class="container">
+        <div class="row space-between align-items-center">
+            <div class="col-8 text-white">
+                <h1>My Gym</h1>
+                <h2>Queremos hacerte lindo y fuerte papito</h2>
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+    </div>
 </section>
-<footer>
+<footer id="footer">
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorem.
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia
