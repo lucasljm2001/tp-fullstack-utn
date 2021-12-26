@@ -36,6 +36,14 @@
                             @csrf
                             <th>{{$su->name}}, {{$su->apellido}}</th>
                             <td>
+                                <!-- Order Value -->
+                                <span style="display: none">
+                                    @isset($su->dias)
+                                    {{$su->dias}}
+                                    @else
+                                    -1
+                                    @endisset
+                                </span>
                                 <div class="form-outline">
                                     <i class="fas fa-calendar-plus trailing"></i>
                                     <input class="form-control form-icon-trailing" type="number" value="{{$su->dias}}" name="dias" min="0" max="20" />
