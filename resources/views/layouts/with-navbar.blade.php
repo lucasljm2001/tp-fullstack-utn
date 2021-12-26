@@ -69,7 +69,7 @@
                         <a class="dropdown-item" href="{{route('rutinas.marcas')}}">Marcas</a>
                     </li>
                     <li>
-                        <a class="dropdown-item"  href="{{route('clientes.administrar')}}">Subscripciones</a>
+                        <a class="dropdown-item" href="{{route('clientes.administrar')}}">Subscripciones</a>
                     </li>
                 </ul>
             </div>
