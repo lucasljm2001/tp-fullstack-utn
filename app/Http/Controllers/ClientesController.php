@@ -28,7 +28,7 @@ class ClientesController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-        return view('auth.login');
+        return redirect('/login');
     }
 
     public function administrar(Request $request)
