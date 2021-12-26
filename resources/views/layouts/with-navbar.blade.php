@@ -56,7 +56,7 @@
             </a> -->
             @auth
             <!-- Notifications -->
-            @if($tipo === 'admin')
+            @if(Session::get('tipo') === 'admin')
             <div class="dropdown">
                 <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-tools fs-lg"></i>
