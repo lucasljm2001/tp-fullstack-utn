@@ -37,12 +37,13 @@ class ClientesController extends Controller
                         ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
                         ->first();*/
         $sus = DB::table('users')
-            ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+            ->leftJoin('subscripcion', 'users.id', '=', 'subscripcion.id')
             ->select('name', 'dias', 'apellido', 'users.id')
             ->get();
         $params = [
             'sus' => $sus
         ];
+
         return view('clientes.admin', $params);
     }
 

@@ -56,20 +56,12 @@ class SuscripcionController extends Controller
     public function agregarSuscripcion(Request $request)
     {
         $id = $request->post('id');
-        $dias = $request->post('dias');
+        $dias = 20;
+
         DB::table('subscripcion')->upsert([
             ['id' => $id, 'id_subscripcion' => $id, 'dias' => $dias],
         ], ['id', 'id_subscripcion'], ['dias']);
 
-        $cliente = Cliente::select('name')
-            ->where('id', $id)
-            ->first();
-
-        $resp = [
-            'cliente' => $cliente->name,
-            'dias' => $dias,
-        ];
-
-        return response()->json($resp);
+        return redirect('/clientes/admin');
     }
 }
