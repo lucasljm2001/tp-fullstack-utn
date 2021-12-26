@@ -14,10 +14,8 @@
 
 
 @section('body')
-
 @parent
-
-<body>
+<main>
     <!-- Header -->
     <section>
         <div class="container-fluid  bg-light mt-2 mb-1 rounded">
@@ -30,7 +28,7 @@
     </section>
 
     <section>
-        <div class="container">
+        <div class="container-fluid table-responsive-md">
             <table class="table table-borderless">
                 <thead class="table-dark">
                     <tr>
@@ -46,8 +44,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                        <th scope="row"><button class="btn btn-outline-secondary dia domingo" id="0" codigo ="0">Domingo</button></th>
+                    <tr>
+                        <th scope="row"><button class="btn btn-outline-secondary dia domingo" id="0" codigo="0">Domingo</button></th>
                         <td class="es">09:00</td>
                         <td>
                             <button class="btn btn-success btn-rounded hor" id="09:00:0">
@@ -57,7 +55,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><button class="btn btn-outline-secondary dia lunes" id="1" codigo ="1">Lunes</button></th>
+                        <th scope="row"><button class="btn btn-outline-secondary dia lunes" id="1" codigo="1">Lunes</button></th>
                         <td class="es">10:00</td>
                         <td>
                             <button class="btn btn-success btn-rounded hor" id="10:00:0">
@@ -67,7 +65,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><button class="btn btn-outline-secondary dia martes" id="2" codigo ="2">Martes</button></th>
+                        <th scope="row"><button class="btn btn-outline-secondary dia martes" id="2" codigo="2">Martes</button></th>
                         <td class="es" class="turnos">11:00</td>
                         <td>
                             <button class="btn btn-success btn-rounded hor" id="11:00:0">
@@ -77,7 +75,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><button class="btn btn-outline-secondary dia miercoles" id="3" codigo ="3">Miercoles</button></th>
+                        <th scope="row"><button class="btn btn-outline-secondary dia miercoles" id="3" codigo="3">Miercoles</button></th>
                         <td class="es" class="turnos">15:00</td>
                         <td>
                             <button class="btn btn-primary btn-rounded hor" id="15:00:0">
@@ -87,7 +85,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><button class="btn btn-outline-secondary dia jueves" id="4" codigo ="4">Jueves</button></th>
+                        <th scope="row"><button class="btn btn-outline-secondary dia jueves" id="4" codigo="4">Jueves</button></th>
                         <td class="es">16:00</td>
                         <td>
                             <button class="btn btn-warning btn-rounded hor" id="16:00:0">
@@ -97,7 +95,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><button class="btn btn-outline-secondary dia viernes" id="5" codigo ="5">Viernes</button></th>
+                        <th scope="row"><button class="btn btn-outline-secondary dia viernes" id="5" codigo="5">Viernes</button></th>
                         <td class="es">17:00</td>
                         <td>
                             <button class="btn btn-danger btn-rounded hor" id="17:00:0">
@@ -107,7 +105,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><button class="btn btn-outline-secondary dia sabado" id="6" codigo ="6">Sábado</button></th>
+                        <th scope="row"><button class="btn btn-outline-secondary dia sabado" id="6" codigo="6">Sábado</button></th>
                         <td class="es">18:00</td>
                         <td>
                             <button class="btn btn-rounded disabled hor" id="18:00:0">
@@ -120,5 +118,5 @@
             </table>
         </div>
     </section>
-</body>
+</main>
 @endsection
