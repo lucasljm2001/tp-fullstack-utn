@@ -20,7 +20,7 @@
     <section id="section1" class="container-fluid">
         <div class="row space-between align-items-center">
             <div class="col-md-6 text-white">
-                <h1 id="title" >My Gym</h1>
+                <h1 id="title">My Gym</h1>
                 <h2>Queremos hacerte lindo y fuerte papito</h2>
             </div>
             <div id="animacion" class="col-md-4">
@@ -29,7 +29,7 @@
         </div>
     </section>
 
-    <section id="section2" class="align-items-center" >
+    <section id="section2" class="align-items-center">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-6">
@@ -92,9 +92,10 @@
 
         <div class="container align-items-center justify-content-center text-white">
             <h3>Antes de suscribirte podés venir a hacer una clase de prueba! Sin compromiso BRO</h2>
-            <h2 class="m-0 pb-5">Pero, acordate... NO PAIN NO GAIN BUDDEEEEEEEEEE</h3>
+                <h2 class="m-0 pb-5">Pero, acordate... NO PAIN NO GAIN BUDDEEEEEEEEEE
+            </h3>
         </div>
-        <a href="http://localhost/tp-fullstack-utn/public/clientes/rutinas">Rutinas</a>
+
     </section>
 </main>
 
