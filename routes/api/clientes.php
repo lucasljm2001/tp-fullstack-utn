@@ -38,7 +38,7 @@ Route::get('/clientes/marcas', [\App\Http\Controllers\RutinasController::class, 
 Route::post('/clientes/marcas', [\App\Http\Controllers\RutinasController::class, 'insertarMarca'])
     ->name('rutinas.insertarMarca');
 
-Route::post('/clientes/susc', [\App\Http\Controllers\SuscripcionController::class, 'modificarSuscripcion'])
+Route::post('/clientes/susc/{id}', [\App\Http\Controllers\SuscripcionController::class, 'modificarSuscripcion'])
     ->name('suscripcion.modificarSuscripcion');
 
 Route::post('/clientes/turnosprueba', [\App\Http\Controllers\TurnosController::class, 'agregarTurno'])
