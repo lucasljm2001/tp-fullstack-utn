@@ -29,16 +29,16 @@
         </div>
     </section>
 
-    <section id="section2" class="align-items-center">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-6">
-                    <h1 class="ms-auto" style="font-size:50px; width:650px">
+    <section id="section2">
+        <div class="container-fluid mx-auto">
+            <div class="row ">
+                <div class="col-md-6 align-items-center ">
+                    <h1 class=" display-1 mx-auto text-center mt-5">
                         Voy a ser tu entrenador personal. Quedate tranquilo que conmigo te vas para arriba rey. Vas a ser una locura de músculos.
                     </h1>
                 </div>
-                <div class="col-6" style="width:650px;height:700px">
-                    <img id="entrenador" src="{{asset('assets/entrenador.png')}}" class="img-fluid me-auto mt-5" alt="entrenador">
+                <div class="col-md-6 align-items-center text-center">
+                    <img id="entrenador" src="{{asset('assets/entrenador.png')}}" class="img-fluid mt-5 mx-auto" alt="entrenador">
                 </div>
             </div>
         </div>
