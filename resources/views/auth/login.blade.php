@@ -11,7 +11,9 @@
 <div class="flex-container">
     <div class="table">
         <div class="container text-center border-2 mt-2">
-            <img src="{{asset('assets/brand.png')}}" height="300" width="120" class="img-fluid mt-2" />
+            <a href="/">
+                <img src="{{asset('assets/brand.png')}}" height="300" width="120" class="img-fluid mt-2" />
+            </a>
         </div>
         <div class="container">
             <!--div class="abs-center"-->
