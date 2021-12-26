@@ -101,7 +101,8 @@ class ClientesController extends Controller
         ];
 
         $dias = Cliente::select('dias')
-            ->join('subscripcion', 'users.id', '=', 'subscripcion.id')
+            ->leftJoin('subscripcion', 'users.id', '=', 'subscripcion.id')
+            ->where('users.email', '=', $usuario)
             ->first();
 
 
