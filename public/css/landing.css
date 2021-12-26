@@ -1,5 +1,5 @@
 #section1 {
-    background: url('../assets/bg-landing1.png');
+    background: url("../assets/bg-landing1.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -7,36 +7,32 @@
     background-color: #0effcf;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 700px;
 }
 #section3 {
     background-color: #006961;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 700px;
 }
 #section4 {
     background-color: #0e9bff;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 700px;
 }
 
 h1 {
-    font-family: 'Bebas Neue', cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 100px;
 }
 
 h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: medium;
 }
 
 h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: medium;
 }
-
 
 #animacion {
     min-width: 400px;
@@ -44,6 +40,6 @@ h3 {
 
 @media only screen and (max-width: 500px) {
     #animacion {
-      display: none;
+        display: none;
     }
-  }
+}
