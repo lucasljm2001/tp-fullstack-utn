@@ -7,6 +7,7 @@
     background-color: #0effcf;
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 700px;
 }
 #section3 {
     background-color: #006961;
@@ -21,17 +22,18 @@
 
 h1 {
     font-family: "Bebas Neue", cursive;
+}
+
+#title {
     font-size: 100px;
 }
 
 h2 {
     font-family: "Montserrat", sans-serif;
-    font-size: medium;
 }
 
 h3 {
     font-family: "Montserrat", sans-serif;
-    font-size: medium;
 }
 
 #animacion {
@@ -43,3 +45,10 @@ h3 {
         display: none;
     }
 }
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
