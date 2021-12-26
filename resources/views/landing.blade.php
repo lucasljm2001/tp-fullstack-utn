@@ -7,6 +7,7 @@
 @endsection
 
 @section('customCSS')
+@parent
 <link rel="stylesheet" href="{{asset('css/landing.css')}}">
 @endsection
 
@@ -19,7 +20,7 @@
     <section id="section1" class="container-fluid">
         <div class="row space-between align-items-center">
             <div class="col-md-6 text-white">
-                <h1>My Gym</h1>
+                <h1 id="title" >My Gym</h1>
                 <h2>Queremos hacerte lindo y fuerte papito</h2>
             </div>
             <div id="animacion" class="col-md-4">
@@ -28,16 +29,16 @@
         </div>
     </section>
 
-    <section id="section2" class="container-fluid">
-        <div class="align-items-center">
+    <section id="section2" class="align-items-center" >
+        <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col mt-4 mb-2">
-                    <h1 style="font-size:50px">
+                <div class="col-6">
+                    <h1 class="ms-auto" style="font-size:50px; width:650px">
                         Voy a ser tu entrenador personal. Quedate tranquilo que conmigo te vas para arriba rey. Vas a ser una locura de músculos.
                     </h1>
                 </div>
-                <div class="col mt-4 mb-2">
-                    <img src="{{asset('assets/entrenador.png')}}" class="img-fluid" alt="entrenador">
+                <div class="col-6" style="width:650px;height:700px">
+                    <img id="entrenador" src="{{asset('assets/entrenador.png')}}" class="img-fluid me-auto mt-5" alt="entrenador">
                 </div>
             </div>
         </div>
@@ -90,8 +91,8 @@
         </div>
 
         <div class="container align-items-center justify-content-center text-white">
-            <h2>Antes de suscribirte podés venir a hacer una clase de prueba! Sin compromiso BRO</h2>
-            <h3>Pero, acordate... NO PAIN NO GAIN BUDDEEEEEEEEEE</h3>
+            <h3>Antes de suscribirte podés venir a hacer una clase de prueba! Sin compromiso BRO</h2>
+            <h2 class="m-0 pb-5">Pero, acordate... NO PAIN NO GAIN BUDDEEEEEEEEEE</h3>
         </div>
     </section>
 </main>
