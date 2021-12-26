@@ -94,6 +94,7 @@
             <h3>Antes de suscribirte podés venir a hacer una clase de prueba! Sin compromiso BRO</h2>
             <h2 class="m-0 pb-5">Pero, acordate... NO PAIN NO GAIN BUDDEEEEEEEEEE</h3>
         </div>
+        <a href="http://localhost/tp-fullstack-utn/public/clientes/rutinas">Rutinas</a>
     </section>
 </main>
 
