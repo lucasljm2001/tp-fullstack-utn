@@ -32,49 +32,32 @@
                 <tbody>
                     @foreach($sus as $su)
                     <tr>
-                        @isset($su->dias)
-                        <form method="POST" action="{{route('suscripcion.modificarSuscripcion', ['id'=>$su->id])}}">
+                        <form method="POST" action="{{ $su->dias ? route('suscripcion.modificarSuscripcion', ['id'=>$su->id]) : route('suscripcion.agregarSuscripcion')}}">
                             @csrf
                             <th>{{$su->name}}, {{$su->apellido}}</th>
                             <td>
                                 <!-- Order Value -->
                                 <span style="display: none">
-                                    {{$su->dias}}
+                                    {{$su->dias ?? -1}}
                                 </span>
+
+                                @isset($su->dias)
                                 <div class="form-outline text-center">
                                     <i class="fas fa-calendar-plus trailing"></i>
                                     <input class="form-control form-icon-trailing" type="number" value="{{$su->dias}}" name="dias" min="0" max="20" />
                                 </div>
-                            </td>
-                            <td>
-                                <span style="display: none">1</span>
-                                <button class="btn btn-info btn-lg btn-floating" type="submit">
-                                    <i class="fas fa-user-edit"></i>
-                                </button>
-                            </td>
-                        </form>
-                        @else
-                        <form method="POST" action="{{route('suscripcion.agregarSuscripcion')}}">
-                            @csrf
-                            <th>{{$su->name}}, {{$su->apellido}}</th>
-                            <td>
-                                <!-- Order Value -->
-                                <span style="display: none">
-                                    -1
-                                </span>
+                                @else
+                                <p>No posee subscripción</p>
                                 <input type="hidden" name="id" value="{{$su->id}}" />
-                                <div class="form-outline">
-                                    <p>No posee subscripción</p>
-                                </div>
+                                @endisset
                             </td>
                             <td>
-                                <span style="display: none">2</span>
-                                <button class="btn btn-success btn-lg btn-floating" type="submit">
-                                    <i class="fas fa-user-plus"></i>
+                                <span style="display: none">{{$su->dias ? 1 : 0}}</span>
+                                <button class="btn {{$su->dias ? 'btn-info' : 'btn-secondary'}} btn-lg btn-floating" type="submit">
+                                    <i class="{{$su->dias ? 'fas fa-user-edit' : 'fas fa-user-plus'}}"></i>
                                 </button>
                             </td>
                         </form>
-                        @endisset
                     </tr>
                     @endforeach
                 </tbody>
