@@ -1,3 +1,9 @@
 html {
     scroll-behavior: smooth;
 }
+
+.front-header-section {
+    background: url("../assets/bg-landing1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -3,6 +3,7 @@
 @section('title', 'Turnos')
 
 @section('customCSS')
+@parent
 <link rel="stylesheet" href="{{asset('css/turnos.css')}}">
 @endsection
 
@@ -15,21 +16,24 @@
 
 @section('body')
 @parent
-<main>
+<main class="bg-dark h-100">
     <!-- Header -->
-    <section>
-        <div class="container-fluid  bg-light mt-2 mb-1 rounded">
-            <button class="btn btn-outline-success btn-floating flecha" data-mdb-ripple-color="success" id="izq"><i class="fas fa-arrow-up"></i></button>
-            <p class="mt-1 mb-1">
-                Semana: <small>del</small> <strong id="dia1">26/12/2021</strong> <small>al</small> <strong id="dia2">1/1/2022</strong>
-            </p>
-            <button class="btn btn-outline-success btn-floating flecha" data-mdb-ripple-color="success" id="der"><i class="fas fa-arrow-down"></i></button>
+    <section id="frontHeader" class="container-fluid front-header-section">
+        <div class="row space-between align-items-center">
+            <div class="col text-white py-4">
+                <p class="display-1">Mis Turnos</p>
+                <button class="btn btn-outline-success btn-floating flecha" data-mdb-ripple-color="success" id="izq"><i class="fas fa-arrow-up"></i></button>
+                <p class="mt-1 mb-1">
+                    Semana: <small>del</small> <strong id="dia1">26/12/2021</strong> <small>al</small> <strong id="dia2">1/1/2022</strong>
+                </p>
+                <button class="btn btn-outline-success btn-floating flecha" data-mdb-ripple-color="success" id="der"><i class="fas fa-arrow-down"></i></button>
+            </div>
         </div>
     </section>
-
-    <section>
+    <!-- Table -->
+    <section class="bg-dark py-5">
         <div class="container-fluid table-responsive-md">
-            <table class="table table-borderless">
+            <table class="table table-borderless bg-light">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">
