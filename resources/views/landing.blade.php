@@ -44,52 +44,57 @@
         </div>
     </section>
 
-    <section id="section3" class="container-fluid">
-        <div class="row row-cols-1 row-cols-md-3 mb-3 p-5 text-center">
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">Rookie</h4>
-                    </div>
+    <section id="subscriptions" class="container-fluid">
+        <h1 class="text-center display-1 py-2 text-light">Suscripciones</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Rookie -->
+            <div class="col mt-3">
+                <div class="card">
+                    <img src="{{asset('assets/susc-1.png')}}" height="50px" width="auto" class="card-img-top" alt="Sub 1">
                     <div class="card-body">
+                        <h3 class="card-title display-2">
+                            Rookie
+                        </h3>
                         <h1 class="card-title pricing-card-title">$2200<small class="text-muted fw-light">/mes</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>2 veces por semana</li>
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">Pro</h4>
-                    </div>
+            <!-- Standard -->
+            <div class="col mt-3">
+                <div class="card">
+                    <img src="{{asset('assets/susc-2.png')}}" height="50px" width="auto" class="card-img-top" alt="Sub 2">
                     <div class="card-body">
+                        <h3 class="card-title display-2">Estándar</h3>
                         <h1 class="card-title pricing-card-title">$2500<small class="text-muted fw-light">/mes</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>3 veces por semana</li>
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                    <div class="card-header py-3 text-white bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Yeah Buddeeee</h4>
-                    </div>
+            <!-- Pro -->
+            <div class="col mt-3">
+                <div class="card">
+                    <img src="{{asset('assets/susc-3.png')}}" height="50px" width="auto" class="card-img-top" alt="Sub 3">
                     <div class="card-body">
+                        <h3 class="card-title display-2">Pro</h3>
                         <h1 class="card-title pricing-card-title">$3000<small class="text-muted fw-light">/mes</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>Te venís cuando quieras padre</li>
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
                     </div>
                 </div>
             </div>
         </div>
-
+        <hr />
+        <div class="container justify-content-center align-items-center my-3">
+            <a type="button" class="btn btn-light btn-rounded btn-lg" href="{{ route('register') }}">
+                <h3>Unite ahora!</h3>
+            </a>
+        </div>
         <div class="container align-items-center justify-content-center text-white">
             <h3>Antes de suscribirte podés venir a hacer una clase de prueba! Sin compromiso BRO</h2>
                 <h2 class="m-0 pb-5">Pero, acordate... NO PAIN NO GAIN BUDDEEEEEEEEEE
@@ -98,6 +103,40 @@
 
     </section>
 </main>
+
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright
+    </div>
+    <!-- Copyright -->
+</footer>
 
 <!-- <section id="section4">
 

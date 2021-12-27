@@ -28,9 +28,9 @@
                             Home
                         </a>
                     </li>
-                    <li class="nav-item {{ Request::is('team') ? 'active' : ''}}">
-                        <a class="nav-link" href="#" style="font-family: 'Montserrat', sans-serif">
-                            Team
+                    <li class="nav-item {{ Request::is('Subscripciones') ? 'active' : ''}}">
+                        <a class="nav-link" href="#subscriptions" style="font-family: 'Montserrat', sans-serif">
+                            Suscripciones
                         </a>
                     </li>
                     @auth

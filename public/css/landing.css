@@ -9,7 +9,7 @@
     background-size: cover;
     min-height: 700px;
 }
-#section3 {
+#subscriptions {
     background-color: #006961;
     background-repeat: no-repeat;
     background-size: cover;
@@ -50,5 +50,4 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
-  }
-  
+}
