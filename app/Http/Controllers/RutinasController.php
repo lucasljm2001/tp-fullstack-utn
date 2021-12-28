@@ -8,42 +8,40 @@ use \Illuminate\Support\Facades\DB;
 
 use App\Models\Cliente;
 
+use function PHPUnit\Framework\isEmpty;
+
 class RutinasController extends Controller
 {
     public function mostrar()
     {
         $rutinas = DB::table('rutinas')
-                            ->join('ejercicios', 'rutinas.id', '=', 'ejercicios.id_rutina')
-                            ->select('nombre_rutina', 'nombre_ejercicio', 'dia')
-                            ->distinct()
-                            ->get();
-        $dias = DB::table('rutinas')
-                    ->select('nombre_rutina', 'dia')
-                    ->distinct()
-                    ->get();;
-        $rutinasNombres = [];
-        for ($i=0; $i <count($rutinas) ; $i++) { 
-            array_push($rutinasNombres, $rutinas[$i]->nombre_rutina);
-        }
+            ->select()
+            ->distinct()
+            ->get();
+
+        $ejercicios = DB::table('ejercicios')->select()->get();
+
+
         $params = [
-            'rutinas' => array_unique($rutinasNombres),
-            'ejercicios' => $rutinas,
-            'dias' => $dias
+            'rutinas' => $rutinas,
+            'ejercicios' => $ejercicios,
         ];
+
         return view('clientes.rutinas', $params);
     }
+
     public function marcas()
     {
         $marcas = DB::table('marcas')
-                        ->join('users', 'marcas.idcliente', '=', 'users.id')
-                        ->join('desafios', 'marcas.desafio', '=', 'desafios.id')
-                        ->select('name', 'apellido', 'idcliente', 'nombre_desafio', 'marca', 'desafio')
-                        ->get();
+            ->join('users', 'marcas.idcliente', '=', 'users.id')
+            ->join('desafios', 'marcas.desafio', '=', 'desafios.id')
+            ->select('name', 'apellido', 'idcliente', 'nombre_desafio', 'marca', 'desafio')
+            ->get();
 
         $desafios = DB::table('desafios')
-                        ->select('nombre_desafio')
-                        ->get();
-        
+            ->select('nombre_desafio')
+            ->get();
+
         $params = [
             'marcas' => $marcas,
             'desafios' => $desafios
@@ -52,15 +50,16 @@ class RutinasController extends Controller
 
         return view('clientes.marcas', $params);
     }
+
     public function borrar(Request $request)
     {
         $nombre = $request->post('nombre');
 
-        DB:: table('rutinas')
-                ->where('nombre_rutina', $nombre)
-                ->delete();
-        $res =[
-            'ok'=>'ok'
+        DB::table('rutinas')
+            ->where('nombre_rutina', $nombre)
+            ->delete();
+        $res = [
+            'ok' => 'ok'
         ];
 
         return response()->json($res);
@@ -72,12 +71,12 @@ class RutinasController extends Controller
         $nombre = $request->post('nombre');
 
         $rutinas = DB::table('rutinas')
-                            ->select('nombre_rutina', 'dia', 'id')
-                            ->where('nombre_rutina', $nombre)
-                            ->distinct()
-                            ->get();
-        if (count($rutinas)==0) {
-            $res =[
+            ->select('nombre_rutina', 'dia', 'id')
+            ->where('nombre_rutina', $nombre)
+            ->distinct()
+            ->get();
+        if (count($rutinas) == 0) {
+            $res = [
                 'error' => 'error'
             ];
             return response()->json($res);
@@ -98,21 +97,23 @@ class RutinasController extends Controller
                 'nombre_ejercicio' => $data[0],
                 'id_rutina' => $rutinas[0]->id
             ]);
-            DB::table('ejercicios')
+        DB::table('ejercicios')
             ->insert([
                 'nombre_ejercicio' => $data[1],
                 'id_rutina' => $rutinas[0]->id
             ]);
-            
-        $res =[
-            'dia' =>$rutinas[0]->dia,
+
+        $res = [
+            'dia' => $rutinas[0]->dia,
             //'ejercicios' => $ejercicios,
-            'rutina' =>$rutinas[0]->id,
+            'rutina' => $rutinas[0]->id,
             'data' => $data
         ];
 
         return response()->json($res);
     }
+
+    // API
     public function insertar(Request $request)
     {
         $nombre = $request->post('nombre');
@@ -121,7 +122,7 @@ class RutinasController extends Controller
         $dia = $request->post('dia');
 
 
-        $idrut =DB::table('rutinas')->insertGetId([
+        $idrut = DB::table('rutinas')->insertGetId([
             'nombre_rutina' => $nombre,
             'dia' => $dia
         ]);
@@ -134,8 +135,10 @@ class RutinasController extends Controller
             'nombre_ejercicio' => $ej2,
             'id_rutina' => $idrut
         ]);
-        $res =[
-            'nombre'=>$nombre,
+
+
+        $res = [
+            'nombre' => $nombre,
             'ej1' => $ej1,
             'ej2' => $ej2,
             'dia' => $dia
@@ -143,6 +146,76 @@ class RutinasController extends Controller
 
         return response()->json($res);
     }
+
+
+    public function renderUpsert(Request $request)
+    {
+
+        $nombre = $request->post('nombre');
+        $ej1 = $request->post('ej1');
+        $ej2 = $request->post('ej2');
+        $dia = $request->post('dia');
+        $id = $request->post('rutina');
+
+
+        if ($id == -1) {
+            $this->createRutinaFrom($nombre, [$ej1, $ej2], $dia);
+        } else {
+            $this->updateRutina($id, $nombre, [$ej1, $ej2], $dia);
+        }
+
+        return redirect('/clientes/rutinas');
+    }
+
+    public function renderDelete($id)
+    {
+        $this->deleteRutina($id);
+
+        return redirect('/clientes/rutinas');
+    }
+
+    /**
+     * Crea una rutina dado un nombre, una lista de ejercicios y un dia.
+     */
+    private function createRutinaFrom(string $name, array $ejs, string $day)
+    {
+        $id = DB::table('rutinas')->insertGetId([
+            'nombre_rutina' => $name,
+            'dia' => $day
+        ]);
+
+        foreach ($ejs as $ejercicio) {
+            DB::table('ejercicios')->insert([
+                'nombre_ejercicio' => $ejercicio,
+                'id_rutina' => $id
+            ]);
+        }
+    }
+
+    /**
+     * Actualiza una rutina.
+     */
+    private function updateRutina(string $id, string $name, array $ejs, string $day)
+    {
+        DB::table('rutinas')->where('id', $id)->update(
+            ['dia' => $day, 'nombre_rutina' => $name]
+        );
+
+        foreach ($ejs as $ej) {
+            DB::table('ejercicios')->updateOrInsert(
+                ['nombre_ejercicio' => $ej, 'id_rutina' => $id],
+                ['nombre_ejercicio' => $ej, 'id_rutina' => $id]
+            );
+        }
+    }
+
+    private function deleteRutina($id)
+    {
+        DB::table('ejercicios')->where('id_rutina', $id)->delete();
+        DB::table('rutinas')->delete($id);
+    }
+
+
     public function insertarMarca(Request $request)
     {
         $nombre = $request->post('nombre');
@@ -151,32 +224,32 @@ class RutinasController extends Controller
         $marca = $request->post('marca');
 
         $idDesafio = DB::table('desafios')
-                            ->where('nombre_desafio', $desafio)
-                            ->select('id')
-                            ->get();
+            ->where('nombre_desafio', $desafio)
+            ->select('id')
+            ->get();
 
-        $users =DB::table('users')
-                ->select('id')
-                ->where('name', $nombre)
-                ->where('apellido', $apellido)
-                ->get();
+        $users = DB::table('users')
+            ->select('id')
+            ->where('name', $nombre)
+            ->where('apellido', $apellido)
+            ->get();
 
         if (count($users) == 0) {
-            $res =[
-                'error'=>'error'
+            $res = [
+                'error' => 'error'
             ];
             return response()->json($res);
         }
 
-       DB::table('marcas')->updateOrInsert([
+        DB::table('marcas')->updateOrInsert([
             'idcliente' => $users[0]->id,
             'desafio' => $idDesafio[0]->id,
         ], [
             'marca' => $marca,
         ]);
 
-        $res =[
-            'nombre'=>$nombre,
+        $res = [
+            'nombre' => $nombre,
             'idcliente' => $users[0]->id,
             'desafio' => $desafio,
             'marca' => $marca,
@@ -190,8 +263,8 @@ class RutinasController extends Controller
     public function desafios(Request $request)
     {
         $desafios = DB::table('desafios')
-                    ->select('nombre_desafio')
-                    ->get();
+            ->select('nombre_desafio')
+            ->get();
         $params = [
             'desafios' => $desafios
         ];
@@ -201,7 +274,7 @@ class RutinasController extends Controller
     public function insertarDesafio(Request $request)
     {
         $desafio = $request->post('desafio');
-        $res =[
+        $res = [
             'desafio' => $desafio
         ];
 
@@ -215,7 +288,7 @@ class RutinasController extends Controller
     public function eliminarDesafio(Request $request)
     {
         $desafio = $request->post('desafio');
-        $res =[
+        $res = [
             'desafio' => $desafio
         ];
 

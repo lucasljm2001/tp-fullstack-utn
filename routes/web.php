@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Session;
 */
 
 require __DIR__ . '/api/clientes.php';
+require __DIR__ . '/api/rutinas.php';
 
 Route::get('/', function () {
     return redirect("home");

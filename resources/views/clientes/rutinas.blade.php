@@ -1,98 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{asset('css/turnos.css')}}">
-    <script src="{{asset('js/rutinas.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('css/rutinas.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="
-    <title>Document</title>
-</head>
-<body>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
-<div class="container costado">
-    <div class="form-group">
-        <label for="formGroupExampleInput">Nombre de la rutina</label>
-        <input type="text" class="form-control inp" id="nombre" placeholder="Nombre de la rutina">
-    </div>
-    <div class="form-group">
-        <label for="formGroupExampleInput2">Ejercicio 1</label>
-        <input type="text" class="form-control inp" id="ej1" placeholder="Ejercicio 1">
-    </div>
-    <div class="form-group">
-        <label for="formGroupExampleInput2">Ejercicio 2</label>
-        <input type="text" class="form-control inp" id="ej2" placeholder="Ejercicio 2">
-    </div>
-    <div class="form-group">
-        <label for="formGroupExampleInput2">Dia</label>
-        <input type="text" class="form-control inp" id="dia" placeholder="Dia">
-    </div>
-    <button type="button" class="btn btn-outline-secondary agregar">Agregar rutina</button>
-    <button type="button" class="btn btn-outline-secondary modificar">Modificar rutina</button>
-</div>
+@extends('layouts.with-navbar')
 
-<div class="container mt-3 mb-4">
-<div class="col-lg-9 mt-4 mt-lg-0 rutinas">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
-          <table class="table manage-candidates-top mb-0">
-            <thead>
-              <tr>
-                <th>Rutina</th>
-                <th class="text-center">Dia</th>
-                <th class="action text-right">Accion</th>
-              </tr>
-            </thead>
-            <tbody>
-            @foreach ($rutinas as $rutina)
-              <tr class="candidates-list">
-                <td class="title">
-                  <div class="candidate-list-details">
-                    <div class="candidate-list-info">
-                      <div class="candidate-list-title">
-                        <h5 class="mb-0">{{$rutina}}</h5>
-                      </div>
-                      <div class="candidate-list-option">
-                        <ul class="list-unstyled">
-                        @foreach ($ejercicios as $ejercicio)
-                                @if($rutina == $ejercicio->nombre_rutina)
-                          <li class="{{$rutina}}">{{$ejercicio->nombre_ejercicio}}</li>
-                          @endif
-                        @endforeach
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                @foreach ($dias as $dia)
-                                @if($rutina == $dia->nombre_rutina)
-                <td class="candidate-list-favourite-time text-center">
-                  <a class="candidate-list-favourite order-2 text-danger" href="#"><i class="far fa-calendar"></i></a>
-                  <span class="candidate-list-time order-1 {{$rutina}}">{{$dia->dia}}</span>
-                </td>
-                    @endif
-                @endforeach
-                <td>
-                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                    <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt editar" id="{{$rutina}}"></i></a></li>
-                    <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt eliminar" id="{{$rutina}}"></i></a></li>
-                  </ul>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-          
+@section('title', 'Administrar Rutinas')
+
+
+@section('customCSS')
+@parent
+<link rel="stylesheet" href="{{asset('css/rutinas.css')}}">
+<link rel="stylesheet" href="{{asset('css/turnos.css')}}">
+@endsection
+
+@section('customJS')
+@parent
+<script src="{{asset('js/rutinas.js')}}"></script>
+@endsection
+
+
+@section('body')
+@parent
+<main class="container-fluid bg-dark pb-3">
+    <!-- Header -->
+    <section id="frontHeader" class="container-fluid front-header-section">
+        <div class="row space-between align-items-center">
+            <div class="col text-white py-4">
+                <p class="display-1">Gestionar Rutinas</p>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
+    </section>
+    <!-- Table-->
+    <section id="table-section">
+        <div class="container mt-3 rounded">
+            <div class="row">
+                <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm rounded">
+                    <table class="table manage-candidates-top mb-0">
+                        <thead>
+                            <tr>
+                                <th>Rutina</th>
+                                <th class="text-center">Dia</th>
+                                <th class="action text-right">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($rutinas as $rutina)
+                            <tr class="candidates-list">
+                                <td class="title">
+                                    <div class="candidate-list-details">
+                                        <div class="candidate-list-info">
+                                            <div class="candidate-list-title">
+                                                <h5 class="mb-0 rutina-{{$rutina->id}}-value">{{$rutina->nombre_rutina}}</h5>
+                                            </div>
+                                            <div class="candidate-list-option">
+                                                <ul class="list-unstyled">
+                                                    @foreach ($ejercicios as $ejercicio)
+                                                    @if($rutina->id == $ejercicio->id_rutina)
+                                                    <li class="rutina-{{$rutina->id}}-value">{{$ejercicio->nombre_ejercicio}}</li>
+                                                    @endif
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="candidate-list-favourite-time text-center">
+                                    <a class="candidate-list-favourite order-2 text-danger" href="#"><i class="far fa-calendar"></i></a>
+                                    <span class="candidate-list-time order-1 rutina-{{$rutina->id}}-value">{{$rutina->dia}}</span>
+                                </td>
+                                <td>
+                                    <form action=" {{route('rutinas.delete', ['id' => $rutina->id])}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="#" class="btn btn-outline-info btn btn-floating" data-toggle="tooltip"><i class="fas fa-pencil-alt editar" id="{{$rutina->id}}"></i></a>
+                                        <button class="btn btn-danger btn btn-floating" type="submit"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="form-routine">
+        <div class="container bg-light my-4 py-3 rounded">
+            <!-- Form -->
+            <form method="post" action="{{ route('rutinas.post') }}">
+                @csrf
+                <h1>Rutina</h1>
+                <!-- Id Modifier -->
+                <input type="hidden" class="form-control" id="rutina-id" name="rutina" value="-1" />
+                <!-- Routine Name -->
+                <div class="form-outline">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de la Rutina" required />
+                    <label class="form-label" for="nombre">Rutina</label>
+                </div>
+                <!-- Ejercicios -->
+                <div class="row my-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" id="ej1" name="ej1" placeholder="Clean & Jerk" required />
+                            <label class="form-label" for="ej1">Ejercicio 1</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" id="ej2" name="ej2" placeholder="Hand-Realease Push Up" required />
+                            <label class=" form-label" for="ej2">Ejercicio 2</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Día -->
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Dia</label>
+                    <input type="text" class="form-control inp" id="dia" name="dia" placeholder="Dia">
+                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-floating">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button type="reset" class="btn btn-primary btn-lg btn-floating">
+                    <i class="fas fa-undo"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
+@endsection
