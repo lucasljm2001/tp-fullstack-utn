@@ -1,5 +1,5 @@
 body{
-    background-image: url(http://localhost/tp-fullstack-utn/public/images/fondo.jpg);
+    background-image: url("../images/fondo.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -201,4 +201,8 @@ button{
 
 .user-dashboard-info-box .candidates-list .thumb {
     margin-right: 20px;
+}
+
+h1 {
+    font-family: "Bebas Neue", cursive;
 }

@@ -18,7 +18,7 @@
             <!-- Navbar brand -->
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
                 <img src="{{asset('assets/brand.png')}}" height="45" width="45" alt="App logo" loading="lazy" />
-                <h3 id="nombre_empresa" style="font-family: 'Bebas Neue', cursive">My Gym</h3>
+                <h3 id="nombre_empresa" style="font-family: 'Bebas Neue', cursive">FitBox</h3>
             </a>
             <!-- Left Content -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">

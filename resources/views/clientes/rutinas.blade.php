@@ -5,8 +5,8 @@
 
 @section('customCSS')
 @parent
-<link rel="stylesheet" href="{{asset('css/rutinas.css')}}">
 <link rel="stylesheet" href="{{asset('css/turnos.css')}}">
+<link rel="stylesheet" href="{{asset('css/rutinas.css')}}">
 @endsection
 
 @section('customJS')
@@ -17,12 +17,12 @@
 
 @section('body')
 @parent
-<main class="container-fluid bg-dark pb-3">
+<main class="container-fluid pb-3">
     <!-- Header -->
     <section id="frontHeader" class="container-fluid front-header-section">
         <div class="row space-between align-items-center">
-            <div class="col text-white py-4">
-                <p class="display-1">Gestionar Rutinas</p>
+            <div class="col text-light py-4" style='font-family: "Bebas Neue", cursive;'>
+                <h1 class="display-1">Gestionar Rutinas</h1>
             </div>
         </div>
     </section>
