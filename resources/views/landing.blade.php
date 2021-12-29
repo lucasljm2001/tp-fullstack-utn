@@ -8,7 +8,7 @@
 
 @section('customCSS')
 @parent
-<link rel="stylesheet" href="{{asset('css/landing.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/landing.css')}}">
 @endsection
 
 @section('body')
@@ -20,8 +20,8 @@
     <section id="section1" class="container-fluid">
         <div class="row space-between align-items-center">
             <div class="col-md-6 text-white">
-                <h1 id="title">My Gym</h1>
-                <h2>Queremos hacerte lindo y fuerte papito</h2>
+                <h1 id="title">FitBox</h1>
+                <h2> La suerte es proporcional al sudor </h2>
             </div>
             <div id="animacion" class="col-md-4">
                 <iframe src='https://my.spline.design/cylindersanimationcopy-43c0e5e1ed68a1131b25d698596a2193/' class="embed-responsive-item" frameborder='0' width='100%' height='700px'></iframe>
@@ -30,31 +30,38 @@
     </section>
 
     <section id="section2">
-        <div class="container-fluid mx-auto">
-            <div class="row ">
-                <div class="col-md-6 align-items-center ">
+        <div class="container-fluid pt-5 mx-auto align-items-center">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4 align-items-end ">
                     <h1 class=" display-1 mx-auto text-center mt-5">
-                        Voy a ser tu entrenador personal. Quedate tranquilo que conmigo te vas para arriba rey. Vas a ser una locura de músculos.
+                        Rafa Arretegui
                     </h1>
+                    <h2>
+                        Mi trabajo es hacerte mejorar
+                        tanto en tu físico como en tu mente. <br> <br>
+                        Empecé este proyecto gracias a mi pasión por el deporte
+                        Hoy contamos con algunos de los mejores profesores
+                        de Argentina para que te acompañen en tu camino.
+                    </h2>
                 </div>
-                <div class="col-md-6 align-items-center text-center">
-                    <img id="entrenador" src="{{asset('assets/entrenador.png')}}" class="img-fluid mt-5 mx-auto" alt="entrenador">
+                <div class="col-md-4 align-items-start text-center">
+                    <img id="entrenador" src="{{asset('assets/entrenador.png')}}" class="img-fluid mx-auto" alt="entrenador">
                 </div>
+                <div class="col-md-2"></div>
             </div>
         </div>
     </section>
 
     <section id="subscriptions" class="container-fluid">
-        <h1 class="text-center display-1 py-2 text-light">Suscripciones</h1>
+        <h1 class="text-center display-1 py-5 text-light">Suscripciones</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <!-- Rookie -->
             <div class="col mt-3">
                 <div class="card">
-                    <img src="{{asset('assets/susc-1.png')}}" height="50px" width="auto" class="card-img-top" alt="Sub 1">
+                    <img src="{{asset('assets/susc-1.png')}}" class="card-img-top" alt="Sub 1">
                     <div class="card-body">
-                        <h3 class="card-title display-2">
-                            Rookie
-                        </h3>
+                        <h1 class="card-title display-2">Rookie</h1>
                         <h1 class="card-title pricing-card-title">$2200<small class="text-muted fw-light">/mes</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>2 veces por semana</li>
@@ -67,7 +74,7 @@
                 <div class="card">
                     <img src="{{asset('assets/susc-2.png')}}" height="50px" width="auto" class="card-img-top" alt="Sub 2">
                     <div class="card-body">
-                        <h3 class="card-title display-2">Estándar</h3>
+                        <h1 class="card-title display-2">Estándar</h1>
                         <h1 class="card-title pricing-card-title">$2500<small class="text-muted fw-light">/mes</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>3 veces por semana</li>
@@ -80,10 +87,10 @@
                 <div class="card">
                     <img src="{{asset('assets/susc-3.png')}}" height="50px" width="auto" class="card-img-top" alt="Sub 3">
                     <div class="card-body">
-                        <h3 class="card-title display-2">Pro</h3>
+                        <h1 class="card-title display-2">Pro</h1>
                         <h1 class="card-title pricing-card-title">$3000<small class="text-muted fw-light">/mes</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li>Te venís cuando quieras padre</li>
+                            <li>Te venís cuando quieras</li>
                         </ul>
                     </div>
                 </div>

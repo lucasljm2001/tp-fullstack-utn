@@ -51,3 +51,11 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.card-img-top {
+    width: 50%;
+}
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+}
