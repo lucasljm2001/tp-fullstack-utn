@@ -103,8 +103,8 @@
             </a>
         </div>
         <div class="container align-items-center justify-content-center text-white">
-            <h3>Antes de suscribirte podés venir a hacer una clase de prueba! Sin compromiso BRO</h2>
-                <h2 class="m-0 pb-5">Pero, acordate... NO PAIN NO GAIN BUDDEEEEEEEEEE
+            <h3 class="py-5">Antes de suscribirte podés venir a hacer una clase de prueba!</h2>
+                <h2 class="m-0 pb-5">NO PAIN NO GAIN
             </h3>
         </div>
 
@@ -140,7 +140,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2021 Copyright
+        © Desarrollo Web Fullstack UTN - Neoris 2021  -  Lucas Martínez, Melanie Martínez, Franco Parente, Tomás Sánchez
     </div>
     <!-- Copyright -->
 </footer>
