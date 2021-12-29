@@ -29,6 +29,60 @@
         </div>
     </section>
 
+    <section id="gallery" class="container-fluid">
+        <!-- Carousel wrapper -->
+        <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <!-- Inner -->
+            <div class="carousel-inner">
+                <!-- Single item -->
+                <div class="carousel-item active">
+                    <img src="https://images.pexels.com/photos/7675416/pexels-photo-7675416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="d-block w-100" alt="Women Jumping" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Alcanza tus metas</h5>
+                        <p>Los obstáculos no tienen que frenarte.</p>
+                    </div>
+                </div>
+
+                <!-- Single item -->
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/4046746/pexels-photo-4046746.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=750&w=1260" class="d-block w-100" alt="Canyon at Nigh" />
+                    <div class="carousel-caption d-none d-md-block text-dark">
+                        <h5>Alta intensidad</h5>
+                        <p>La intensidad se ajusta para desafiar la perfomance.</p>
+                    </div>
+                </div>
+
+                <!-- Single item -->
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/7689285/pexels-photo-7689285.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="d-block w-100" alt="Cliff Above a Stormy Sea" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Rutinas Variadas</h5>
+                        <p>Los ejercicios son diferentes cada día y pueden modificarse acorde a cada atleta.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Inner -->
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- Carousel wrapper -->
+    </section>
+
     <section id="section2">
         <div class="container-fluid pt-5 mx-auto align-items-center">
             <div class="row">
@@ -59,7 +113,7 @@
             <!-- Rookie -->
             <div class="col mt-3">
                 <div class="card">
-                    <img src="{{asset('assets/susc-1.png')}}" class="card-img-top" alt="Sub 1">
+                    <img src="{{asset('assets/susc-1.png')}}" class="card-img-top mx-auto" alt="Sub 1">
                     <div class="card-body">
                         <h1 class="card-title display-2">Rookie</h1>
                         <h1 class="card-title pricing-card-title">$2200<small class="text-muted fw-light">/mes</small></h1>
@@ -72,7 +126,7 @@
             <!-- Standard -->
             <div class="col mt-3">
                 <div class="card">
-                    <img src="{{asset('assets/susc-2.png')}}" height="50px" width="auto" class="card-img-top" alt="Sub 2">
+                    <img src="{{asset('assets/susc-2.png')}}" height="50px" width="auto" class="card-img-top mx-auto" alt="Sub 2">
                     <div class="card-body">
                         <h1 class="card-title display-2">Estándar</h1>
                         <h1 class="card-title pricing-card-title">$2500<small class="text-muted fw-light">/mes</small></h1>
@@ -85,7 +139,7 @@
             <!-- Pro -->
             <div class="col mt-3">
                 <div class="card">
-                    <img src="{{asset('assets/susc-3.png')}}" height="50px" width="auto" class="card-img-top" alt="Sub 3">
+                    <img src="{{asset('assets/susc-3.png')}}" height="50px" width="auto" class="card-img-top mx-auto" alt="Sub 3">
                     <div class="card-body">
                         <h1 class="card-title display-2">Pro</h1>
                         <h1 class="card-title pricing-card-title">$3000<small class="text-muted fw-light">/mes</small></h1>
@@ -140,7 +194,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © Desarrollo Web Fullstack UTN - Neoris 2021  -  Lucas Martínez, Melanie Martínez, Franco Parente, Tomás Sánchez
+        © Desarrollo Web Fullstack UTN - Neoris 2021 - Lucas Martínez, Melanie Martínez, Franco Parente, Tomás Sánchez
     </div>
     <!-- Copyright -->
 </footer>
