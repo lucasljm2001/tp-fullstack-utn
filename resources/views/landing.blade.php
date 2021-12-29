@@ -20,7 +20,7 @@
     <section id="section1" class="container-fluid">
         <div class="row space-between align-items-center">
             <div class="col-md-6 text-white">
-                <h1 id="title">FitBox</h1>
+                <h1 id="title" class="text-break">Fit Box</h1>
                 <h2> La suerte es proporcional al sudor </h2>
             </div>
             <div id="animacion" class="col-md-4">
