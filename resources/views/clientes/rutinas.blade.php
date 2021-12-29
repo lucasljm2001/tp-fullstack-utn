@@ -86,7 +86,7 @@
             <!-- Form -->
             <form method="post" action="{{ route('rutinas.post') }}">
                 @csrf
-                <h1>Rutina</h1>
+                <h1>Alta de Rutina</h1>
                 <!-- Id Modifier -->
                 <input type="hidden" class="form-control" id="rutina-id" name="rutina" value="-1" />
                 <!-- Routine Name -->
